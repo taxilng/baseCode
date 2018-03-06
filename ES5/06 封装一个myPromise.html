@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function myPromise(fn){
+        const missions = [];//待执行队列
+        var value = null;
+        var state = 'pending';
+        //执行传入的方法
+        fn(resolve);
+
+        //当传入的方法中调用resolve(value)时，异步执行mission
+        function resolve(_return_value){
+            state = 'fulfilled';
+            value = _return_value;
+            setTimeout(function() {
+                missions.forEach(function(mission) {
+                    mission(value);
+                });
+            }, 0);
+        }
+
+        //执行then方法时，将传入的方法加入missions，等待resolve触发。
+        this.then = function(mission){
+            function fn(resolve){
+                if(state === 'pending'){
+                    missions.push(mission)
+                }else{
+                    const result = mission(value);
+                    resolve(result);//关键！
+                }
+            }
+            return new myPromise(fn);
+        }
+    }
+
+    function wash(resolve){
+        console.log('开始洗衣服...');
+        resolve('一堆洗干净的衣服');
+        
+        // setTimeout(function() {
+        //     console.log('洗完了！');
+        // },3000);
+    }
+    function hang(clothes){
+        console.log(clothes);
+        console.log('开始晾衣服...');
+        /*...晾衣服中...*/
+        return new myPromise(function(resolve){
+            setTimeout(function() {
+                console.log(clothes + '晾完了！');
+                resolve("一堆晾好的衣服");
+            }, 3000);
+        });
+    }
+
+
+    new myPromise(wash).then(hang);
+</script>
+</body>
+</html>
