@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Function.prototype.a = 'a';
+        Object.prototype.b = 'b';
+
+        function Person() {this.name = 'wahaha'};
+        var p = new Person();
+        console.log('p.a: ' + p.a);
+        console.log('p.b: ' + p.b);
+       
+
+        Function.prototype.a = 'a';
+        Object.prototype.b = 'b';
+        var foo = function(){}
+        console.log('foo.a: ' + foo.a);
+        console.log('foo.b: ' + foo.b);
+    </script>
+</body>
+
+</html>
