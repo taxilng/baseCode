@@ -14,19 +14,25 @@
         var handler = {
             message: "Event handled",
             handleClick: function (event) {
-                alert(this.message);
+                console.log(event.target);
+                console.log(this.message);
             }
         };
-        var btn = document.getElementById("my-btn");
-        btn.onclick = function(){
-              handler.handleClick.call(handler) ;
+
+        function bind(fn, context) {
+            return function () {
+                return fn.apply(context, arguments);
+            };
         }
-       
-        
+
+        var btn = document.getElementById("my-btn");
+        btn.onclick = bind(handler.handleClick, handler)
+
+
+
         // btn.onclick = function(){
         //     handler.handleClick() ;
-        // } 
-        
+        // }
     </script>
 </body>
 
