@@ -25,8 +25,26 @@
             };
         }
 
+        function bind1(fn, context) {
+            var args = Array.prototype.slice.call(arguments, 2);
+            return function () {
+                var innerArgs = Array.prototype.slice.call(arguments);
+                var finalArgs = args.concat(innerArgs);
+                return fn.apply(context, finalArgs);
+            };
+        }
+        var handler1 = {
+            message: "Event handled",
+            handleClick: function (name, event) {
+                console.log(this.message + ":" + name + ":" + event.type);
+            }
+        };
         var btn = document.getElementById("my-btn");
-        btn.onclick = bind(handler.handleClick, handler)
+        btn.onclick = bind1(handler1.handleClick, handler1, "my-btn");
+
+
+        // var btn = document.getElementById("my-btn");
+        // btn.onclick = bind(handler.handleClick, handler)
 
 
 
