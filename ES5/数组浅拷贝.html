@@ -11,9 +11,23 @@
 <body>
     <script>
         'use strict'
-        console.log([] == true);
-        console.log(['1'] == true);
-        console.log([{a:'1'}] == true);
+        var arr = [1, 2]
+        // var arr1 = arr.concat()
+        // var arr2 = arr.slice()
+        // arr1.push(3)
+        // arr2.push(4)
+        // console.log(arr,arr1,arr2);
+        var str = 'loa'
+
+        function doArr(arrC, strC) {
+            arrC.push('LOL');
+            strC += 'd'
+            console.log(strC.length);
+            // Array.prototype.push.apply(strC, "a")
+            console.log(strC);
+        }
+        doArr(arr, str)
+        console.log(arr, str);
     </script>
 </body>
 
