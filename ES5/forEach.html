@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // if (!Array.prototype.forEach) {
+
+            Array.prototype.forEach = function (callback, thisArg) {
+                var T, k;
+                if (this == null) {
+                    throw new TypeError(' this is null or not defined');
+                }
+                var O = Object(this);
+               
+                var len = O.length >>> 0;
+                if (typeof callback !== "function") {
+                    throw new TypeError(callback + ' is not a function');
+                }
+                if (arguments.length > 1) {
+                    T = thisArg;
+                }
+                k = 0;
+                while (k < len) {
+                    var kValue;
+                    if (k in O) {
+                        kValue = O[k];
+                        callback.call(T, kValue, k, O);
+                    }
+                    k++;
+                }
+            };
+        // }
+
+
+        var arr = [1,2,3]
+
+
+        var a = 64
+        var b = a >>> 0 
+        console.log(b);
+        // var arr1 = Object(arr)
+        // arr1.push(4)
+        // console.log(arr);
+        // console.log(arr1);
+        // console.log(arr1 === arr);
+        arr.forEach(function (ele) {
+            console.log(ele);
+        })
+    </script>
+</body>
+
+</html>

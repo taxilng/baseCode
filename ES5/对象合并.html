@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+        var obj1 = {
+                a: 'a1',
+                b: {
+                    name :'zs'
+                }
+            },
+            　obj2 = {
+                a: 'a2',
+                c: 'c'
+            }
+        // let {...obj3} = obj1
+        var obj4 = JSON.parse(JSON.stringify(obj1))
+        // obj1.d = 'd'
+        // obj1.b.name = 'ls'
+        // console.log(obj3);
+        console.log(obj4);
+        // function mergeObj(objFir, objSec){
+        //     for(var i in objFir){
+        //         for(var j in objSec){
+        //             if(!objFir[j]){
+        //                 objFir[j] = objSec[j];
+        //             }
+        //         }
+        //     }
+        // }
+        // mergeObj(obj1, obj2);
+        // console.log(obj1);
+        // var obj3 = Object.assign({}, obj1, obj2)
+        // console.log(obj3);
+    </script>
+</body>
+
+</html>

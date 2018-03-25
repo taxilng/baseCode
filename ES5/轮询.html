@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../plug/jquery-3.0.0.min.js"></script>
+    <script>
+        var time1 = new Date().getTime();
+        setInterval(function () {
+            queryInfo1()
+        }, 5000)
+        function queryInfo1() {
+            $.ajax({
+                url: 'https://cnodejs.org/api/v1/topics',
+                method: 'get',
+                data: {
+                    page: 0,
+                    limit: 10
+                },
+                success: function (res) {
+                    var time2 = new Date().getTime()
+                    console.log('一方法',time2 - time1);
+                    time1 = time2;
+                    console.log(res);
+                }
+            })
+        }
+
+        var time3 = new Date().getTime()
+        queryInfo();
+        function queryInfo() {
+            $.ajax({
+                url: 'https://cnodejs.org/api/v1/topics',
+                method: 'get',
+                data: {
+                    page: 0,
+                    limit: 10
+                },
+                success: function (res) {
+                    var time4 = new Date().getTime()
+                    console.log('二方法',time4 - time3);
+                    time3 = time4;
+                    console.log(res);
+                    setTimeout(queryInfo, 5000)
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
