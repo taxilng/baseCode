@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+        //阶乘
+        function factorial(n) {
+            if (n === 1) {
+                return 1
+            } else {
+                return n * factorial(n - 1)
+            }
+        }
+        var sum = factorial(4)
+        console.log(sum);
+
+        function factorialSum(n) {
+            if (n === 1) {
+                return 1
+            } else {
+                return factorial(n) + factorialSum(n - 1)
+            }
+        }
+
+        var fixSum = factorialSum(4)
+        console.log(fixSum);
+    </script>
+</body>
+
+</html>
