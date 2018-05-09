@@ -12,26 +12,34 @@
     <script>
         'use strict'
         //阶乘
-        function factorial(n) {
-            if (n === 1) {
-                return 1
-            } else {
-                return n * factorial(n - 1)
-            }
-        }
-        var sum = factorial(4)
-        console.log(sum);
+        // function factorial(n) {
+        //     if (n === 1) {
+        //         return 1
+        //     } else {
+        //         return n * factorial(n - 1)
+        //     }
+        // }
+        // var sum = factorial(4)
+        // console.log(sum);
 
-        function factorialSum(n) {
-            if (n === 1) {
-                return 1
-            } else {
-                return factorial(n) + factorialSum(n - 1)
-            }
-        }
+        // function factorialSum(n) {
+        //     if (n === 1) {
+        //         return 1
+        //     } else {
+        //         return factorial(n) + factorialSum(n - 1)
+        //     }
+        // }
 
-        var fixSum = factorialSum(4)
-        console.log(fixSum);
+        // var fixSum = factorialSum(4)
+        // console.log(fixSum);
+
+        const fn = i =>
+            i &&
+            (
+                (fn.fact = i => i - 1 ? i * fn.fact(--i) : i)(i) +
+                fn(--i)
+            );
+        console.log(fn(3))
     </script>
 </body>
 

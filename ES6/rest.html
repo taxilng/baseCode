@@ -11,8 +11,34 @@
 <body>
     <script>
         'use strict'
-        const sum = (...vals) => {vals.reduce((total,num) => total+num)}
+        // const sum = (...vals) => {vals.reduce((total,num) => total+num)}
+
+
+        // function add(...rest) {
+
+        //     let num = rest.reduce((a, b) => a + b, 0)
+        //     let _add = (...args) => {
+        //         num = args.reduce((a, b) => a + b, num)
+        //         return _add
+        //     }
+        //     _add.toString = _add.valueOf = () => num
+        //     return _add
+
+        // }
+
+        function add(...rest) {
+            let num = rest.reduce((a, b) => a + b, 0)
+            let _add = (...args) => add(args.reduce((a, b) => a + b, num))
+            _add.toString = _add.valueOf = () => num
+            return _add
+        }
+
+
+        console.log(add(1, 2, 3));
+        console.log(add(1)(2)(3));
+        console.log(add(1, 2)(2)(3));
+        console.log(add(1, 2)(2, 3)(3));
     </script>
 </body>
 
-</html> 
+</html>
