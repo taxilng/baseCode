@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+
+        // function Fibonacci(n) {
+        //     if (n <= 1) {
+        //         return 1
+        //     };
+
+        //     return Fibonacci(n - 1) + Fibonacci(n - 2);
+        // }
+
+        // function fb(n) {
+        //     var a = [],
+        //         i;
+        //     a[0] = 1;
+        //     a[1] = 1;
+        //     for (i = 2; i <= n; i++) {
+        //         a[i] = a[i - 1] + a[i - 2];
+        //     }
+        //     return a[i - 1]
+        // }
+
+        // console.log(fb(4));
+        // console.log(Fibonacci(4));
+
+        function Fibonacci2(n, ac1 = 1, ac2 = 1) {
+            if (n <= 1) {
+                return ac2
+            };
+
+            return Fibonacci2(n - 1, ac2, ac1 + ac2);
+        }
+
+        console.log(Fibonacci2(100)) // 
+        console.log(Fibonacci2(1000)) // 
+        console.log(Fibonacci2(10000)) //
+    </script>
+</body>
+
+</html>

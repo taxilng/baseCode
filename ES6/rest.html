@@ -27,8 +27,9 @@
         // }
 
         function add(...rest) {
-            let num = rest.reduce((a, b) => a + b, 0)
-            let _add = (...args) => add(args.reduce((a, b) => a + b, num))
+            const sum = (vals, initVal) => vals.reduce((a, b) => a + b, initVal),
+                num = sum(rest, 0),
+                _add = (...args) => add(sum(args, num))
             _add.toString = _add.valueOf = () => num
             return _add
         }
