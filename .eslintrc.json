@@ -1,8 +1,12 @@
 {
+    "plugins": [
+        "html"
+    ],
     "env": {
         "browser": true,
         "commonjs": true,
-        "es6": true
+        "es6": true,
+        "jquery": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
@@ -12,7 +16,7 @@
         "no-console": "off",
         "indent": [
             "error",
-            "tab"
+            4
         ],
         "linebreak-style": [
             "error",
@@ -23,7 +27,7 @@
             "single"
         ],
         "semi": [
-            "error",
+            "off",
             "never"
         ]
     }
