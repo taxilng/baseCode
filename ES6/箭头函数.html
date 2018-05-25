@@ -10,15 +10,10 @@
 
 <body>
     <script>
-        // const str = 'lol'
-        // const str = '\u{20BB7}'
-        const str = String.fromCodePoint(0x20BB7)
-        // for(let i=0,len = str.length;i < len; i++){
-        //     console.log(str[i]);    
-        // }
-        for(let i of str){
-            console.log(i);  
-        }
+        'use strict'
+        const foo = (a, b, c) => (a+b+c)
+        console.log( foo(1,2,3));
+       
     </script>
 </body>
 

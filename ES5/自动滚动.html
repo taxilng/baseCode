@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="Marquee" style="height:58px ; overflow: hidden;"> 
+    <div style="width: 160px; height: 58px">间断-1-caiying2007</div> 
+    <div style="width: 160px; height: 58px">间断-2-caiying2007</div> 
+    <div style="width: 160px; height: 58px">间断-3-caiying2007</div> 
+     <div style="width: 160px; height: 58px">间断-4-caiying2007</div> 
+</div>
+<script> 
+    var Mar = document.getElementById("Marquee"); 
+    var child_div=Mar.getElementsByTagName("div") 
+    var picH =30 //移动高度 
+    var scrollstep=3;//移动步幅,越大越快 
+    var scrolltime=20;//移动频度(毫秒)越大越慢 
+    var stoptime=3000;//间断时间(毫秒) 
+    var tmpH = 0; 
+    Mar.innerHTML += Mar.innerHTML; 
+    var tamer;
+    function start(){ 
+        if(tmpH < picH){ 
+            tmpH += scrollstep; 
+            if(tmpH > picH )tmpH = picH ; 
+            Mar.scrollTop = tmpH; 
+           tamer=  setTimeout(start,scrolltime); 
+        }else{ 
+            tmpH = 0; 
+            Mar.appendChild(child_div[0]); 
+            Mar.scrollTop = 0; 
+            setTimeout(start,stoptime); 
+        } 
+    } 
+    onload=function(){setTimeout(start,stoptime)}; 
+  
+</script>
+</body>
+
+</html>
