@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+
+        // var time1 = new Date().getTime();
+        // for (let i = 0; i < 10000; i++) {
+        //     for (let j = 0; j < 1000; j++) {
+        //         for (let k = 0; k < 1000; k++) {
+        //             if (i / (j + k) + j / (i + k) + k / (i + j) === 4) {
+        //                 console.log(i, j, k);
+        //             }
+        //             // console.log('执行');
+        //         }
+        //     }
+        // }
+        // var time2 = new Date().getTime();
+        // console.log((time2 - time1) / 1000);
+        const i = 154476802108746166441951315019919837485664325669565431700026634898253202035277999,
+            j =    36875131794129999827197811565225474825492979968971970996283137471637224634055579,
+            k =     4373612677928697257861252602371390152816537558161613618621437993378423467772036;
+        console.log(i / (j + k));
+        console.log(j / (i + k));
+        console.log(k / (i + j));
+        const a = i / (j + k) + j / (i + k) + k / (i + j);
+        console.log(a);
+    </script>
+</body>
+
+</html>
