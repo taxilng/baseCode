@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+        <input onpaste="return false" ondragenter="return false"  onkeyup="this.value=this.value.replace(/[\u4E00-\u9FA5]/gi,'')"> 
+        hah
+    <input onpaste="return false" ondragenter="return false" onkeyup="this.value=check(this.value)">
+    <script>
+        // function check(str) {
+        //     var temp = "";
+        //     for (var i = 0; i < str.length; i++)
+        //         if (str.charCodeAt(i) > 0 && str.charCodeAt(i) < 255)
+        //             temp += str.charAt(i)
+        //     return temp
+        // }
+        function check(str) {
+            
+            return str.replace(/[\u4E00-\u9FA5]/gi,'')
+        }
+    </script>
+</body>
+
+</html>
