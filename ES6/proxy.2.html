@@ -10,7 +10,7 @@
 
 <body>
     <script>
-        'use strict'
+        'use strict' 
         const dom = new Proxy({}, {
             get(target, property) {
                 return function (attrs = {}, ...children) {
