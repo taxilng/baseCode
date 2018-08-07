@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>anchor</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #wei {
+      width: 500px;
+      height: 600px;
+      margin: 0 auto;
+      border: 0px solid gray;
+    }
+
+    #wei input {
+      width: 476px;
+      height: 50px;
+      line-height: 50px;
+      padding-left: 20px;
+      font-size: 16px;
+    }
+
+    #wei ul {
+      height: auto;
+      border: 1px solid #ccc;
+      display: none;
+    }
+
+    #wei ul li {
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      text-indent: 10px;
+      font-size: 16px;
+      list-style: none;
+    }
+
+    #wei ul li a {
+      text-decoration: none;
+    }
+
+    #wei ul li:hover {
+      display: block;
+      background: #ccc;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body ng-controller="show">
+  <p id="wei">
+    <input type="text" id="text">
+    <button id="btn">查询</button>
+    <ul id="list"></ul>
+  </p>
+</body>
+<script src="../plug/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+  var txt = document.getElementById("text");
+  var btn = document.getElementById("btn");
+  var oUl = document.getElementById("list");
+  btn.onclick = function () {
+    var url = 'http://www.baidu.com/s?wd=' + txt.value;
+    $.ajax({
+      url: url,
+      success: function(obj){
+        console.log('suc');
+      },
+      error: function(err){
+        console.log('err');
+      }
+    })
+    // window.location.href = url;
+    console.log('hh');
+  }
+</script>
+
+</html>
