@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+
+        function f1(age) {
+            this.age = age;
+            this.say = () => console.log("hah")
+            this.getName = function () {
+                console.log('zs');
+            }
+        }
+        f1.prototype.hello = () => console.log("hello")
+
+        var f2 = new f1(16);
+        var f3 = new f1(20);
+
+        console.log(f2.hello === f3.hello); //true
+
+        function foo(age) {
+            var old = age + 2;
+            return {
+                age: old,
+                say: () => console.log("hah2")
+            }
+        }
+        console.log(foo().say == foo().say); //false
+    </script>
+</body>
+
+</html>
