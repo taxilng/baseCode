@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #father {
+            width: 700px;
+            height: 500px;
+            position: relative;
+            left: 500px;
+        }
+
+        hr {
+            height: 5px;
+            border: none;
+            border-top: 3px ridge black;
+            margin-top: 5px;
+        }
+
+        h4 {
+            font-size: 20px;
+        }
+
+        #list {
+            border: 1px solid;
+            margin-top: 5px;
+            position: relative;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        ul li {
+            background: pink;
+            margin-top: 5px;
+            list-style: none;
+            width: 698px;
+            height: 25px;
+        }
+
+        span {
+            position: relative;
+            left: 580px;
+            display: none;
+            top: -20px;
+        }
+
+        textarea {
+            width: 698px;
+            height: 300px;
+            font-size: 20px;
+            resize: none;
+            margin-top: 8px;
+        }
+
+        input {
+            width: 700px;
+            height: 50px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+        <iframe width="960" height="540" src="https://yaoshe8.com/embed/17328" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+    <div id="father">
+        <h4>留言内容:</h4>
+        <hr>
+        <div id="list">
+            <ul>
+
+                <p>这里是留言内容.....</p>
+
+            </ul>
+        </div>
+        <textarea></textarea>
+        <input type="button" value="点击留言">
+    </div>
+    <script type="text/javascript">
+        window.onload = function () {
+            var text = document.getElementsByTagName('textarea')[0];
+            var btn = document.getElementsByTagName('input')[0];
+            var div = document.getElementById('list');
+            var ul = div.children[0];
+            var p = ul.children[0];
+            var i = 0;
+            btn.onclick = function () {
+                if (text.value == '') {
+                    alert('请输入内容!');
+                } else {
+                    i++;
+                    var li = document.createElement('li');
+                    var a = document.createElement('a');
+                    a.setAttribute('href', '#'); /*  a/span/li/ul  */
+                    var aText = document.createTextNode('确认删除');
+                    var span = document.createElement('span');
+                    var spanFirst = document.createElement('et');
+                    spanFirst.innerText = i + '.';
+                    var liText = document.createTextNode(text.value);
+                    var spanText = document.createTextNode('第' + i + '条');
+                    span.appendChild(spanText);
+                    a.appendChild(aText);
+                    li.appendChild(spanFirst);
+                    li.appendChild(liText);
+                    span.appendChild(a);
+                    li.appendChild(span);
+                    ul.appendChild(li);
+
+                    if (p == ul.children[0]) {
+                        ul.removeChild(p);
+                    }
+
+                    li.onmouseover = function () {
+                        span.style.display = 'block';
+
+                    }
+                    li.onmouseout = function () {
+                        span.style.display = 'none';
+                    }
+
+                    a.onclick = function () {
+
+                        ul.removeChild(this.parentNode.parentNode);
+                        // console.log(li);
+                        // console.log([...ul.children]);
+                        for (var i = 0; i < ul.children.length; i++) {
+                            ul.getElementsByTagName('et')[i].innerText = i+1;
+                        }
+                        if (ul.children.length == 0) {
+                            ul.appendChild(p);
+                        }
+                        i--;
+                    }
+
+                }
+            }
+
+
+
+        }
+    </script>
+</body>
+
+</html>

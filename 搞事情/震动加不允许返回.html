@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="/plug/jquery-3.0.0.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+
+    <title>哈哈</title>
+
+    <script>
+        if (((window.screen.availHeight + window.screen.availWidth) < 1700) && navigator.plugins.length ==
+            0) {
+
+            alert('提示!\n\n您的浏览器版本过低、安全性能低、请立刻升级.\n\n**请勿关闭本窗口**');
+
+
+            if (typeof history.pushState === "function") {
+                history.pushState("back", null, null);
+                window.onpopstate = function () {
+                    history.pushState('back', null, null);
+
+                    var popBack = $(".popup.fourth");
+                    popBack.hide();
+                    setTimeout(function () {
+                        popBack.show();
+                        if (popBack.hasClass("hidePop")) {
+                            //alert("OK");
+                            //popBack.removeClass("hidePop");
+                        } else {
+                            $("a.button").click(function () {
+                                //popBack.addClass("hidePop");
+                                // return false;
+                            });
+                        }
+                    }, 300);
+                    window.navigator.vibrate(5000);
+                    window.navigator.vibrate(5000);
+
+                };
+            }
+
+
+
+
+        }
+    </script>
+
+    <body>
+        有本事你反悔啊
+    </body>
+
+</html>
