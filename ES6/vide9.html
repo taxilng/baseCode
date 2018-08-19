@@ -17,13 +17,13 @@
         var ifra = document.querySelector('iframe');
         ifra.height = window.innerHeight - 50;
         var num = parseInt(Math.random() * 9000) + 1000;
-        let id = sessionStorage.getItem('id');
+        let id = localStorage.getItem('id');
         // ifra.src = 'https://yaoshe11.com/embed/1' + num;
         ifra.src = `https://yaoshe${id}.com/embed/1${num}`;
 
         document.querySelector('#btn').onclick = () => {
             let id = document.querySelector("#box").value;
-            sessionStorage.setItem('id', id)
+            localStorage.setItem('id', id)
 
         }
     </script>
