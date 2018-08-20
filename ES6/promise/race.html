@@ -10,16 +10,16 @@
 
 <body>
     <script>
-        const promise = new Promise(function (resolve) {
+        const promise = new Promise(function (resolve, reject) {
             setTimeout(() => {
-                resolve(1);
+                reject(1);
+                // resolve(1);
             }, 5000);
         });
-        Promise.all([promise, fetch('https://cnodejs.org/api/v1/topics')])
-            .then(res => res[1].json())
+        Promise.race([promise, fetch('https://cnodejs.org/api/v1/topics')])
+            .then(res => res.json())
             .then(res => console.log(res))
             .catch(err => console.log(err))
     </script>
 </body>
-
 </html>
