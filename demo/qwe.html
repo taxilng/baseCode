@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+	<!--添加成员-->
+
+	<div class="addMembersMod4">
+		<ul>
+			<li>手机号：
+				<input type="text" name="cellPhoneNumber" style="width:280px; height:30px;font-size: 1em;">
+			</li>
+			<li>微信号：
+				<input type="text" name="wechatNumber" style="width:280px; height:30px;font-size: 1em;">
+			</li>
+			<li>QQ 号：
+				<input type="text" name="qqNumber" style="width:280px; height:30px;font-size: 1em;">
+			</li>
+			<li>部&ensp; 门：
+				<select class="department1" onchange="">
+					<option>选择部门</option>
+					<!--<option value="department1">设计部</option>
+										<option value="department2">市场部</option>
+										<option value="department3">行政部</option>
+										<option value="department4">IT开发部</option>
+										<option value="department5">营销运营部</option>-->
+				</select>
+			</li>
+			<li>职&ensp; 位：
+				<select class="department2">
+					<option>选择职位</option>
+					<!--<option value="position0">前端开发</option>-->
+				</select>
+			</li>
+		</ul>
+	</div>
+	<button class="btn">提交</button>
+
+</body>
+<script src="./jquery-3.0.0.min.js"></script>
+<script>
+	$.ajax({
+		url: 'https://cnodejs.org/api/v1/topics',
+		type: 'get',
+		data: {
+			name: name,
+			mobile:mobile
+		},
+		success: function (res) {
+			var data = [{
+				"ID": 1,
+				"departmentName": "IT开发部",
+				"positionList": [{
+					"ID": 1,
+					"positionName": ".net开发工程师"
+				}, {
+					"ID": 2,
+					"positionName": "IOS开发"
+				}, {
+					"ID": 5,
+					"positionName": "部门主管"
+				}, {
+					"ID": 6,
+					"positionName": "测试"
+				}, {
+					"ID": 8,
+					"positionName": "安卓开发工程师"
+				}, {
+					"ID": 9,
+					"positionName": "UI设计"
+				}]
+			}, {
+				"ID": 2,
+				"departmentName": "设计部",
+				"positionList": [{
+					"ID": 3,
+					"positionName": "美工"
+				}]
+			}, {
+				"ID": 3,
+				"departmentName": "市场部",
+				"positionList": [{
+					"ID": 4,
+					"positionName": "驻场专员"
+				}]
+			}, {
+				"ID": 5,
+				"departmentName": "人事部",
+				"positionList": [{
+					"ID": 7,
+					"positionName": "人事部独苗"
+				}]
+			}]
+			console.log(res);
+			for (var i = 0; i < data.length; i++) {  
+				$(".department1").append("<option value=" + data[i].ID + ">" + data[i].departmentName + "</option>");
+
+			}
+			select2(data);
+		},
+		error: function(){
+			
+		}
+	})
+
+
+	function select2(data) {
+		$(".department1").on('change', function () {
+			console.log(this.value);
+			var firstIndex = this.value;
+			for (var i = 0; i < data.length; i++) {
+				if (data[i].ID == firstIndex) {
+					var select2 = data[i].positionList;
+					$(".department2").empty();
+					for (var j = 0; j < select2.length; j++) {
+						$(".department2").append("<option value=" + select2[j].ID + ">" + select2[j].positionName +
+							"</option>");
+					}
+				}
+			}
+		})
+	}
+
+
+	$(".department2").on('change', function () {
+		console.log(this.value);
+	})
+	$(".btn").on('click', function () {
+		console.log($(".department2").val());
+		
+	})
+</script>
+
+</html>
