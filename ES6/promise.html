@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+
+        function Promise2(fn) {
+            setTimeout(() => {
+                fn(this.resolve.bind(this), this.reject.bind(this))
+            }, 0)
+        }
+        Promise2.prototype.resolve = function (aa) {
+            this.thenFn(aa);
+        }
+
+
+
+        Promise2.prototype.reject = function (bb) {
+            this.catchFn(bb)
+        }
+
+        Promise2.prototype.then = function (fn) {
+            this.thenFn = fn;
+            return this;
+        }
+
+        Promise2.prototype.catch = function (fn) {
+            this.catchFn = fn;
+            return this;
+        }
+        const url = 'https://cnodejs.org/api/v1/topics'
+
+
+
+
+        new Promise2(function (resolve) {
+            fetch(url).then(data => {
+                console.log(data);
+                resolve(data)});
+        })
+            .then(data => {
+                console.log(data)
+            })
+    </script>
+</body>
+
+</html>

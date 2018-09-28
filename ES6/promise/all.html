@@ -16,7 +16,10 @@
             }, 5000);
         });
         Promise.all([promise, fetch('https://cnodejs.org/api/v1/topics')])
-            .then(res => res[1].json())
+            .then(res => {
+                console.log(res);
+                return res[1].json()
+            })
             .then(res => console.log(res))
             .catch(err => console.log(err))
     </script>
