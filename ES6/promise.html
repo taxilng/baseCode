@@ -13,12 +13,14 @@
         'use strict'
 
         function Promise2(fn) {
+            this.thenNum = 0
+            this.thenDate = null
             setTimeout(() => {
                 fn(this.resolve.bind(this), this.reject.bind(this))
             }, 0)
         }
         Promise2.prototype.resolve = function (aa) {
-            this.thenFn(aa);
+            this.thenDate = this.thenFn(aa);
         }
 
 
@@ -28,7 +30,13 @@
         }
 
         Promise2.prototype.then = function (fn) {
-            this.thenFn = fn;
+            this.thenNum++
+           
+            if(this.thenNum === 1){
+                this.thenFn = fn
+            }else{
+                this.thenDate = fn(this.thenDate)
+            }
             return this;
         }
 
@@ -42,13 +50,11 @@
 
 
         new Promise2(function (resolve) {
-            fetch(url).then(data => {
-                console.log(data);
-                resolve(data)});
+            resolve(1)
         })
-            .then(data => {
-                console.log(data)
-            })
+            .then(data => 2)
+            .then(data => console.log(data))
+
     </script>
 </body>
 

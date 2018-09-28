@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>anchor</title>
+
+</head>
+
+<body id="root">
+  <script type="text/javascript">
+    function createElement(parentEle, props, ...childEles) {
+      if (typeof parentEle === 'function') {
+        return parentEle();
+      } else {
+        let parentElement = document.createElement(parentEle);
+        childEles.forEach(child => {
+          if(typeof child === 'string'){
+            parentElement.innerHTML += child;
+          }else if(typeof child === 'object'){
+            parentElement.appendChild(child)
+          }
+        })
+        return parentElement;
+      }
+
+    }
+
+    function render(insertEle, rootEle) {
+      rootEle.appendChild(insertEle);
+    }
+    React = {
+      createElement
+    }
+    ReactDOM = {
+      render
+    }
+
+    // 第一种
+    // const helloWorld = React.createElement('div', null, `Hello World`);
+
+    // 第二种
+    // const Hello = function () {
+    //   return React.createElement('div', null, `Hello Version2.0`);
+    // };
+    // const helloWorld = React.createElement(Hello, null, null);
+    // ReactDOM.render(helloWorld, document.getElementById('root'));
+
+    //第三种
+    const HelloVersion3 = function () {
+      return React.createElement('div', null, `版本3.0`);
+    };
+    const helloWorld1 = React.createElement(HelloVersion3, null, null);
+    const helloWorld2 = React.createElement(HelloVersion3, null, null);
+    const divEle = React.createElement('div', null, `我被一个div标签包裹`);
+
+    const parent = React.createElement('div', null,
+      helloWorld1,
+      helloWorld2,
+      divEle,
+      `我是文本内容哦`
+    );
+
+    ReactDOM.render(parent, document.getElementById('root'));
+  </script>
+</body>
+
+</html>

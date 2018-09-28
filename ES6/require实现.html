@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+
+        ; (function (global) {
+            var modules = {};
+            var define = function (id, factory) {
+                if (!modules[id]) {
+                    modules[id] = {
+                        id: id,
+                        factory: factory
+                    };
+                }
+            };
+            var require = function (id) {
+                var module = modules[id];
+                if (!module) {
+                    return;
+                }
+
+                if (!module.exports) {
+                    module.exports = {};
+                    console.log(require);
+                    module.factory.call(module.exports, require, module.exports, module);
+                }
+
+                return module.exports;
+            }
+
+            global.define = define;
+            global.require = require;
+        })(this);
+
+        define('Hello', function (require, exports, module) {
+            function sayHello() {
+                console.log('hello modules');
+            }
+            module.exports = {
+                sayHello: sayHello
+            }
+        });
+
+        var Hello = require('Hello');
+        Hello.sayHello();
+
+    </script>
+</body>
+
+</html>

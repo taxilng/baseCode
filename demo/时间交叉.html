@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>anchor</title>
+
+</head>
+
+<body>
+  <script>
+    //  问个问题 var arr = [3:20-7:40]  就不让添加 和这个时间有交叉的时间段了 比如 3:30-8:00
+    const arr = ['3:20-7:40', '2:00-5:00'],
+      tarArr = ['1:30-1:40'];
+
+    const handleTime = (arr) => {
+      let timer = [];
+      arr.forEach((item) => {
+        const indexMid = item.indexOf('-'),
+          indexFirst = item.indexOf(':'),
+          indexLast = item.lastIndexOf(':');
+        let minTime = null,
+          maxTime = null;
+        minTime = +item.slice(indexFirst + 1, indexMid) + item.slice(0, indexFirst) * 60;
+        maxTime = +item.slice(indexLast + 1) + item.slice(indexMid + 1, indexLast) * 60;
+        timer.push({
+          minTime,
+          maxTime
+        })
+      })
+      return timer
+    }
+    const cross = (curTimer, tarTimer) => {
+      const curMinTime = curTimer[0].minTime,
+        curMaxTime = curTimer[0].maxTime
+      let flag = null;
+      tarTimer.forEach((tarItem) => {
+        if (tarItem.minTime > curMinTime && tarItem.minTime < curMaxTime || tarItem.maxTime > curMinTime &&
+          tarItem.maxTime < curMaxTime) {
+          flag = true;
+        }
+      })
+      if (flag) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    const curTimer = handleTime(tarArr)
+    const tarTimer = handleTime(arr)
+    const flagCross = cross(curTimer, tarTimer)
+    console.log(flagCross);
+  </script>
+</body>
+
+</html>
