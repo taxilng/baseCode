@@ -8,6 +8,12 @@
         "es6": true,
         "jquery": true
     },
+    "globals": {
+        "React": true,
+        "ReactDOM": true,
+        "rootReactElement": true,
+        "rootElement": true
+    },
     "extends": "eslint:recommended",
     "parserOptions": {
         "sourceType": "module"
@@ -16,7 +22,7 @@
         "no-console": "off",
         "indent": [
             "error",
-            4
+            4,{ "SwitchCase": 1 }
         ],
         "linebreak-style": [
             "error",
