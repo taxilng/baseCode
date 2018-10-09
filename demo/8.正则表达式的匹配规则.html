@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>8.正则表达式的匹配规则</title>
+</head>
+<body>
+	<h2>正则表达式的匹配规则</h2>
+	<pre>
+		修饰符
+			g 		 全局匹配
+				用法：
+					var reg = /is/g;
+					var reg = new RegExp("is", "g");
+
+			i 		忽略大小写
+				用法：
+					var reg = /is/gi;
+					var reg = new RegExp("is", "gi");
+
+		开头和结尾
+			^ 		匹配字符串的开头
+				用法：
+					var reg = /^[a-z]/;   //匹配以小写字母开头
+					^要写在正则的最前面
+
+			$ 		匹配字符串的结尾
+				用法：
+					var reg = /[a-z]$/;   //匹配以小写字母结尾
+					$要写在正则的最末尾
+
+		字符类
+			\w 		匹配单词字符，包括字母数字下划线
+			\W 		非单词字符，与\w相反
+			\d 		匹配数字，0-9的数字
+			\D 		非数字
+			\s 		匹配空白字符，包含空格、制表符、回车符、换行符等
+			\S 		非空白符
+			\t 		制表符
+			\r 		回车符
+			\n 		换行符
+
+		匹配次数
+			? 		匹配0次或1次，可以没有也可以有一次
+			* 		匹配0次或多次
+			+ 		至少一次或多次
+			{n} 	匹配n次
+			{2,5}	匹配2-5次
+			{2,} 	匹配2次以上
+
+		[] 			在[]内可以任选一个进行匹配
+		[a-z]  		匹配a-z的小写字母
+		[A-Z] 		匹配A-Z的大写字母
+		[a-zA-Z] 	匹配所有的字母（小写字母或大写字母）
+		[0-9] 		匹配所有的数字
+		[a-zA-Z0-9] 匹配所有的字母和数字
+		[abc] 		匹配a或b或c
+		[^abc]   	^在[]里面，代表非的意思，不能是abc
+		[^a-z] 		不能是小写字母
+
+		| 			或者
+		() 			作用一：用于分组，通常与|一起使用
+					用法：
+					var reg = /[a-z]+(.com|.cn)$/;   匹配以.com或.cn结尾的字符串
+
+					作用二：
+					()里面的字符，具有被记忆的功能，一般用于replace替换字符
+					通过$1去引用记忆中的字符，
+					正则中可以有多个()，引用从1开始：$1 $2 $3...
+
+		任意字符
+		. 			匹配除终止符以外的任意字符
+
+
+		转义字符
+		\ 			如果要匹配有特殊功能的字符，则需要用\进行转义
+					转义之后，该字符就变成了普通字符
+					比如：.+*?^$[]{}()|\等等
+
+
+		匹配汉字
+		[\u4E00-\u9FFF]
+
+
+
+	</pre>
+
+	<script>
+	var s = "2This IS a string_32 ";
+	//var reg = /is/gi;
+	/*var reg = new RegExp("is", "gi");
+	var r = s.replace(reg, "aa");
+	console.log(r);*/
+
+	//开头
+	//var reg = /^[a-z]/;   //匹配以小写字母开头
+
+	//结尾
+	//var reg = /[a-z]$/;
+
+	//\w
+	//var reg = /\w$/;
+
+	//var reg = /\W$/;
+
+	//var reg = /\d$/;
+
+	//var reg = /\D$/;
+
+	//var reg = /\t$/;
+
+	s = "aeiwo.com";
+
+	//var reg = /^[a-z]\d?$/;
+	//var reg = /^[a-z]\d*$/;
+
+	//var reg = /^[a-z]\d+$/;
+
+	//var reg = /^[a-z]\d{2,5}$/;
+
+	//var reg = /^[a-zA-Z0-9]\d{2,}$/;
+
+	//var reg = /^[^a-z]\d{2,}$/;
+
+	//var reg = /^(a|b|c)\d{2,}$/;
+	//var reg = /[a-z]+(.com|.cn)$/;
+	//console.log( reg.test( s ) );
+
+
+	/*s = "my name's zhang";    //要替换成my name's mr.zhang
+	var reg = /\s(\w+)$/;
+	//console.log( s.match(reg) );
+	var r = s.replace(reg, " mr.$1");
+	console.log(r);*/
+
+
+	s = "广东省深圳市";
+	var reg = /^[\u4E00-\u9FFF]+$/;
+	console.log( reg.test(s) );
+
+	</script>
+</body>
+</html>
