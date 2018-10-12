@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        // 众所周知,一副扑克按大小分为13种牌,每种牌各4个花色,总共52张牌。 规定13种牌按从小到大的顺序分别为A2345678910JQK,现在从一副牌书抽取20张,每轮选择下列规则中的一项出牌：
+        // 1.单牌:住意一张牌,如Q
+        // 2.顺子:至少五张大小连续的牌,如78910JQ 
+        // 那么,至少需要多少轮才能将20张牌出完? 
+        // 请用js写出方法，可以自动算出随机的20张牌最快多少轮出完
+
+        //生成扑克牌
+        const creatPuk = () => {
+            let pukArr = []
+            for (let i = 1, len = 14; i < len; i++) {
+                let tmpArr = new Array(4).fill(i)
+                pukArr = pukArr.concat(tmpArr)
+            }
+            return pukArr
+        }
+        const mypuk = creatPuk()
+        // console.log(mypuk);
+
+        //随机扑克牌
+        const random = (allPuk) => {
+            let sum = 52,
+                randomPuk = [];
+            for (let i = 0, len = 20; i < len; i++) {
+                const index = Math.floor(Math.random() * sum--)
+                randomPuk.push(allPuk[index]);
+                allPuk.splice(index, 1)
+            }
+            return randomPuk
+        }
+        let myRandomPuk = random(mypuk)
+        // console.log(myRandomPuk);    
+        //排序
+        const sortArr = (randomPuk) => {
+            const sortPuk = randomPuk.sort((a, b) => a - b)
+            return sortPuk
+        }
+        let sortPuk = sortArr(myRandomPuk);
+        console.log(sortPuk);
+
+        //顺子判断
+        const straight = (puk) => {
+            let set = [...new Set(puk)];
+            console.log(set);
+            let straightLen = [];
+            for (let i = 0, len = set.length - 5; i < len; i++) {
+                let n = 4;
+                while (set[i + n -1] - set[i] === n-1) {
+                    n++;
+                }
+              
+                straightLen.push(n-1)
+            }
+           
+            console.log(straightLen);
+            return Math.max.apply(null, straightLen)
+        }
+
+        //123445566789
+
+
+        console.log(straight(sortPuk));
+    </script>
+</body>
+
+</html>
