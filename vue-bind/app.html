@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
   <title>myVue</title>
 </head>
@@ -7,10 +8,11 @@
     text-align: center;
   }
 </style>
+
 <body>
   <div id="app">
     <form>
-      <input type="text"  v-model="number">
+      <input type="text" v-model="number">
       <button type="button" v-click="increment">增加</button>
     </form>
     <h3 v-bind="number"></h3>
@@ -33,12 +35,12 @@
     this._obverse(this.$data);
     this._complie(this.$el);
   }
- 
+
   myVue.prototype._obverse = function (obj) {
     var value;
     for (key in obj) {
       if (obj.hasOwnProperty(key)) {
-        this._binding[key] = {                                                                                                                                                          
+        this._binding[key] = {
           _directives: []
         };
         value = obj[key];
@@ -84,7 +86,7 @@
       }
 
       if (node.hasAttribute('v-model') && (node.tagName == 'INPUT' || node.tagName == 'TEXTAREA')) {
-        node.addEventListener('input', (function(key) {
+        node.addEventListener('input', (function (key) {
           var attrVal = node.getAttribute('v-model');
           _this._binding[attrVal]._directives.push(new Watcher(
             'input',
@@ -94,11 +96,11 @@
             'value'
           ))
 
-          return function() {
-            _this.$data[attrVal] =  nodes[key].value;
+          return function () {
+            _this.$data[attrVal] = nodes[key].value;
           }
         })(i));
-      } 
+      }
 
       if (node.hasAttribute('v-bind')) {
         var attrVal = node.getAttribute('v-bind');
@@ -114,11 +116,11 @@
   }
 
   function Watcher(name, el, vm, exp, attr) {
-    this.name = name;         //指令名称，例如文本节点，该值设为"text"
-    this.el = el;             //指令对应的DOM元素
-    this.vm = vm;             //指令所属myVue实例
-    this.exp = exp;           //指令对应的值，本例如"number"
-    this.attr = attr;         //绑定的属性值，本例为"innerHTML"
+    this.name = name; //指令名称，例如文本节点，该值设为"text"
+    this.el = el; //指令对应的DOM元素
+    this.vm = vm; //指令所属myVue实例
+    this.exp = exp; //指令对应的值，本例如"number"
+    this.attr = attr; //绑定的属性值，本例为"innerHTML"
 
     this.update();
   }
@@ -127,15 +129,15 @@
     this.el[this.attr] = this.vm.$data[this.exp];
   }
 
-  window.onload = function() {
+  window.onload = function () {
     var app = new myVue({
-      el:'#app',
+      el: '#app',
       data: {
         number: 0
       },
       methods: {
-        increment: function() {
-          this.number ++;
+        increment: function () {
+          this.number++;
         },
       }
     })

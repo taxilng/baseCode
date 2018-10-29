@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>anchor</title>
+
+  <style>
+    .box {
+      flex-flow: wrap;
+      /* place-content: stretch center; */
+      justify-content: flex-end;
+      align-items: center;
+      display: flex;
+      /* background-color: #88499c; */
+      border: 1px red solid;
+      width: 550px;
+    }
+
+    .child {
+      /* width: 16vw; */
+      height: 16vw;
+      background-color: #e77f24;
+      margin: 2px;
+      animation: widthMore 5s infinite;
+    }
+
+    @keyframes widthMore {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 30vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+      <a href="javascript:window.opener=null;window.open('','_self');window.close();">关闭</a>
+    <div class="child"></div>
+  </div>
+</body>
+
+</html>

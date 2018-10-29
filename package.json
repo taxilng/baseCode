@@ -27,6 +27,7 @@
     "babel-core": "^5.8.38",
     "co": "^4.6.0",
     "eslint-plugin-html": "^3.2.2",
+    "superagent": "^4.0.0-beta.5",
     "vconsole": "^3.2.0"
   }
 }
