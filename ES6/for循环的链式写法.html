@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+        let groups = [{
+            content: [{
+                permissions: [{
+                    val: 1
+                }, {
+                    val: 2
+                }]
+            }, {
+                permissions: [{
+                    val: 3
+                }, {
+                    val: 4
+                }]
+            }]
+        }, {
+            content: [{
+                permissions: [{
+                    val: 5
+                }, {
+                    val: 6
+                }]
+            }, {
+                permissions: [{
+                    val: 7
+                }, {
+                    val: 8
+                }]
+            }]
+        }, {
+            content: [{
+                permissions: [{
+                    val: 9
+                }, {
+                    val: 10
+                }]
+            }, {
+                permissions: [{
+                    val: 11
+                }, {
+                    val: 12
+                }]
+            }]
+        }]
+      
+        console.log(groups);
+        let filterA = groups
+            .map(a => a.content)
+            .flat()
+            .map(b => b.permissions)
+            .flat()
+            .filter(c => c.val === 12)
+
+
+        console.log(filterA);
+    </script>
+</body>
+
+</html>
