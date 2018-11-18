@@ -10,4 +10,4 @@ export function multiply(x, y) {
 }
 export {multiply as addme}
 export {firstName, lastName, year};
-export default m
+export default {m,add}
