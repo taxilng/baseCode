@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>anchor</title>
+  
+</head>
+
+<body>
+  <input id="box" type="text">
+  <button>搜索</button>
+  <div>
+    <et>您搜索的关键词是</et>
+    <span id="inside">
+      
+    </span>
+  </div>
+</body>
+<script type="text/javascript">
+  const box = document.querySelector("#box")
+  const btn = document.querySelector("button")
+  const isd = document.querySelector("#inside")
+  console.log(box,btn);
+  btn.addEventListener("click",() => {
+      console.log(box.value);
+      isd.innerHTML += box.value
+  })
+</script>
+
+</html>

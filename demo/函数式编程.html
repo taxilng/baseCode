@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+
+    <script>
+        // 这里是一样的=。=
+        var Left = function (x) {
+            this.__value = x;
+        }
+        var Right = function (x) {
+            this.__value = x;
+        }
+
+        // 这里也是一样的=。=
+        Left.of = function (x) {
+            return new Left(x);
+        }
+        Right.of = function (x) {
+            return new Right(x);
+        }
+
+        // 这里不同！！！
+        Left.prototype.map = function (f) {
+            return this;
+        }
+        Right.prototype.map = function (f) {
+            return Right.of(f(this.__value));
+        }
+        console.log(Right.of("Hello").map(str => str + " World!").__value);
+        
+        var getAge = user => user.age ? Right.of(user.age) : Left.of("ERROR!");
+        const alr = getAge({name: 'stark'}).map(age => 'Age is ' + age);
+        console.log(alr);
+    </script>
+</body>
+
+</html>
