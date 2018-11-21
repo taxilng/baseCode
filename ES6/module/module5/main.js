@@ -4,5 +4,9 @@
 // console.log(foo.foo);
 
 
-import {default as add} from './profile.js';
-console.log(add);
+// import {default as add} from './profile.js';
+// console.log(add);
+
+
+const foo = (a = 'jaj') => console.log(a)
+foo()

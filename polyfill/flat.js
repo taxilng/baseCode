@@ -1,6 +1,6 @@
 if (!Array.prototype.flat) {
     Array.prototype.flat = function (num = 1) {
-        if (!Number(num)) {
+        if (!Number(num) || Number(num) < 0) {
             return this;
         }
         var arr = []
@@ -25,11 +25,11 @@ if (!Array.prototype.flat) {
 // test
 const arr = [1, [2, [3, 'a', [4]]]]
 
-console.log(arr.flat('dsdsadf'));
-console.log(arr.flat(-32));
-console.log(arr.flat(0));
-console.log(arr.flat('1'));
-console.log(arr.flat('2'));
-console.log(arr.flat(3));
-console.log(arr.flat(Infinity));
-console.log(arr.flat('Infinity'));
+console.log(arr.flat('dsdsadf'));  // [1, [2, [3, 'a', [4]]]]
+console.log(arr.flat(-32)); // [1, [2, [3, 'a', [4]]]]
+console.log(arr.flat(0));   // [1, [2, [3, 'a', [4]]]]
+console.log(arr.flat('1'));   // [1, 2, [3, 'a', [4]]]
+console.log(arr.flat('2'));    // [1, 2, 3, 'a', [4]]
+console.log(arr.flat(3));       // [1, 2, 3, 'a', 4]
+console.log(arr.flat(Infinity));     // [1, 2, 3, 'a', 4]
+console.log(arr.flat('Infinity'));   // [1, 2, 3, 'a', 4]
