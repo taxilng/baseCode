@@ -10,5 +10,11 @@
 
 <body>
     <script type="module" src="main.js"></script>
+    <script type="module">
+    const x = 1;
+    console.log(x === window.x); //false
+    console.log(this === undefined); // true
+</script>
 </body>
+
 </html>
