@@ -7,24 +7,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        
+
     </style>
 </head>
 
 <body>
     <div>
-        
+
     </div>
-    <input id="File1" type="file"  accept=".xls,.doc,.txt,.pdf"  />
+    <input id="File1" type="file" accept=".xls,.doc,.txt,.pdf" />
     <script>
-        let  a = 1;
+        let a = 1;
         const url = 'https://cnodejs.org/api/v1/topics'
         async function go() {
             let response = await fetch(url);
             let data = await response.json()
             console.log(data);
+            return data
         }
-        go()
+        const data1 = go()
+        console.log(data1);
     </script>
 </body>
+
 </html>

@@ -2,10 +2,10 @@
 <html ng-app="myApp">
 
 <head>
-  <meta charset="UTF-8">
-  <title>anchor</title>
-  <style>
-    * {
+    <meta charset="UTF-8">
+    <title>anchor</title>
+    <style>
+        * {
       margin: 0;
       padding: 0;
     }
@@ -53,31 +53,30 @@
 </head>
 
 <body ng-controller="show">
-  <p id="wei">
-    <input type="text" id="text">
-    <button id="btn">查询</button>
-    <ul id="list"></ul>
-  </p>
+    <p id="wei">
+        <input type="text" id="text">
+        <button id="btn">查询</button>
+        <ul id="list"></ul>
+    </p>
 </body>
 <script src="../plug/jquery-3.0.0.min.js"></script>
 <script type="text/javascript">
-  var txt = document.getElementById("text");
-  var btn = document.getElementById("btn");
-  var oUl = document.getElementById("list");
-  btn.onclick = function () {
-    var url = 'http://www.baidu.com/s?wd=' + txt.value;
-    $.ajax({
-      url: url,
-      success: function(obj){
-        console.log('suc');
-      },
-      error: function(err){
-        console.log('err');
-      }
-    })
-    // window.location.href = url;
-    console.log('hh');
-  }
+    var txt = document.getElementById("text");
+    var btn = document.getElementById("btn");
+    btn.onclick = function () {
+        var url = 'http://www.baidu.com/s?wd=' + txt.value;
+        $.ajax({
+            url: url,
+            success: function () {
+                console.log('suc');
+            },
+            error: function () {
+                console.log('err');
+            }
+        })
+        // window.location.href = url;
+        console.log('hh');
+    }
 </script>
 
 </html>

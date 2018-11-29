@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p {
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        数组中第一个匹配fn函数中条件的索引没有则返
+    </p>
+    <script>
+        const randomStr = "hdjrwqpi"
+        const vowel = ["a", "e", "o", "i", "u"]
+        const isVowel = char => [...char].some(item => vowel.includes(item));
+        console.log(isVowel(randomStr));
+
+
+        const genNumArr = (length, limit) => Array.from({
+            length
+        }, () => Math.floor(Math.random() * limit));
+        console.log(genNumArr(10, 100));
+
+
+
+        const reduce = (f, acc, arr) => {
+            if (arr.length === 0) return acc;
+            const [head, ...tail] = arr;
+            return reduce(f, f(head, acc), tail);
+        };
+
+        const a = [1, 2, 3, 4]
+        const b = a.reduce((total, cur) => total + cur)
+        console.log(b);
+    </script>
+</body>
+
+</html>

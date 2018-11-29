@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title>双向数据绑定</title>
+  </head>
+
+  <body>
+    <script>
+      const arr = [
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        7,
+        8,
+        3,
+        5,
+        4,
+        6,
+        8,
+        2,
+        12,
+        545,
+        745,
+        323,
+        7
+      ]
+      const MIN = Math.min(...arr)
+      const MAX = Math.max(...arr)
+      var obj = {
+        7: MIN - 7,
+        5: MIN - 5,
+        3: MIN - 3,
+        1: MAX + 1
+      }
+      const newArr = arr.sort((a, b) => {
+        const compareA = obj[a] ? obj[a] : a
+        const compareB = obj[b] ? obj[b] : b
+        return compareA - compareB
+      })
+      console.log(newArr)
+    </script>
+  </body>
+</html>
