@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style></style>
+  </head>
+
+  <body></body>
+  <script>
+    // var reg2 = /^[1-9][0-9]*\.?([0-9]{0,2})?$|^0$|^0\.([0][1-9]|[1-9][0-9]{0,1})$/
+    var reg2 = /^(-?[1-9]\d*\.\d{1,2}|-?0\.\d{1,2}|-?[1-9]\d*|0)$/
+
+    console.log('0',reg2.test('0'))
+    console.log('00',reg2.test('00'))
+    console.log('0.',reg2.test('0.'))
+    console.log('0.0',reg2.test('0.0'))
+    console.log('0.00',reg2.test('0.00'))
+    console.log('1.0',reg2.test('1.0'))
+    console.log('1.00',reg2.test('1.00'))
+    console.log('0.000',reg2.test('0.000'))
+    console.log('120.12',reg2.test('120.12'))
+    console.log('120.123',reg2.test('120.123'))
+    console.log('12000.123',reg2.test('12000.123'))
+    console.log('12000.12',reg2.test('12000.12'))
+    console.log('1200',reg2.test('1200'))
+    console.log('3',reg2.test('3'))
+    console.log('001',reg2.test('001'))
+    console.log('01',reg2.test('01'))
+
+    console.log('01.3',reg2.test('01.3'))
+
+    console.log('01.34',reg2.test('01.34'))
+
+    console.log('00.34',reg2.test('00.34'))
+
+    console.log('0.34',reg2.test('0.34'))
+
+    console.log('0.342',reg2.test('0.342'))
+
+    console.log('0.1',reg2.test('0.1'))
+
+    console.log('1.1',reg2.test('1.1'))
+
+    console.log('1.1343',reg2.test('1.1343'))
+  </script>
+</html>
