@@ -1,0 +1,16 @@
+{
+  "name": "stompjs",
+  "main": "lib/stomp.js",
+  "homepage": "https://github.com/stomp-js/stomp-websocket",
+  "version": "4.0.8",
+  "_release": "4.0.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "4.0.8",
+    "commit": "f6825f61d227e33a3989c3cdb87d462cca4eebc9"
+  },
+  "_source": "https://github.com/stomp-js/stomp-websocket.git",
+  "_target": "^4.0.8",
+  "_originalSource": "stompjs",
+  "_direct": true
+}

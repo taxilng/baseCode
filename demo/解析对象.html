@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      div{
+        box-sizing: border-box;
+        margin: 100px;
+        padding: 100px;
+        border: 100px solid red;
+        width: 500px;
+        height: 500px;
+        background: #000;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+
+    </div>
+  </body>
+  <script>
+    'use strict'
+    // function get(data, ...args) {
+    //   const res = JSON.stringify(data)
+    //   return args.map(item => {
+    //     console.log(`${res}.${item}`)
+
+    //     return new Function(`try {return ${res}.${item} } catch(e) {}`)()
+    //   })
+    // }
+
+    // const obj = {
+    //   selector: { to: { toutiao: 'FE Coder' } },
+    //   target: [1, 2, { name: 'byted' }]
+    // }
+
+    // console.log(
+    //   get(obj, 'selector.to.toutiao', 'target[0]', 'target[2].name', 'asd')
+    // )
+  var a = parseInt('0011')
+  console.log(a);
+  
+    //判断数组中是否有大于2的值
+    var a = [{ a: [1, 2] }]
+    var b = a.some(v => {
+      return v.a.some(i => i > 2)
+    })
+    console.log(b)
+  </script>
+</html>
