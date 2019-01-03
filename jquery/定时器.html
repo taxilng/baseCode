@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <style>
-        .departmentList {
-            height: 47px;
-            font-size: 1.4em;
-            background-color: red;
-        }
+      .departmentList {
+        height: 47px;
+        font-size: 1.4em;
+        background-color: red;
+      }
 
-        .departmentList>p {
-            margin-left: 48%;
-            padding-top: 8px;
-        }
+      .departmentList > p {
+        margin-left: 48%;
+        padding-top: 8px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <div class='departmentList'>
-        <p>哈哈</p>
-    </div>
-    <div class='departmentList'>
-        <p>哈哈</p>
-    </div>
-    <div class='departmentList'>
-        <p>哈哈</p>
-    </div>
-    <div class='departmentList'>
-        <p>哈哈</p>
-    </div>
-    <script src='../plug/jquery-3.0.0.min.js'></script>
+  <body>
+    <div class="departmentList"><p>哈哈</p></div>
+    <div class="departmentList"><p>哈哈</p></div>
+    <div class="departmentList"><p>哈哈</p></div>
+    <div class="departmentList"><p>哈哈</p></div>
+    <script src="../plug/jquery-3.0.0.min.js"></script>
     <script>
+      $.ajax({
+        url: 'http://69.115.56.95:15700/auth/login',
+        type: 'post',
+        data: {
+          password: 'string',
+          username: 'string'
+        },
+        success: data => {
+          console.log(data)
+        }
+      })
     </script>
-</body>
-
+  </body>
 </html>
