@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title>双向数据绑定</title>
+  </head>
+
+  <body>
+    <script>
+      const randomArr = () =>
+        Array.from({ length: 100000 }, () => Math.floor(Math.random() * 100))
+      const mysort = arr => {
+        const MIN = Math.min(...arr)
+        const MAX = Math.max(...arr)
+        var obj = {
+          7: MIN - 7,
+          5: MIN - 5,
+          3: MIN - 3,
+          1: MAX + 1
+        }
+        const newArr = arr.sort((a, b) => {
+          const compareA = obj[a] ? obj[a] : a
+          const compareB = obj[b] ? obj[b] : b
+          return compareA - compareB
+        })
+        return newArr
+      }
+
+
+
+      const arr1 = randomArr()
+      console.time('telankes')
+      mysort(arr1)
+      console.log(mysort(arr1))
+      console.timeEnd('telankes') 
+
+    </script>
+  </body>
+</html>

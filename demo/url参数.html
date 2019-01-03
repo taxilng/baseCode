@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    function getQueryObject(url) {
+        url = url == null ? window.location.href : url;
+        var search = url.substring(url.lastIndexOf("?") + 1);
+        var obj = {};
+        var reg = /([^?&=]+)=([^?&=]*)/g;
+        // [^?&=]+表示：除了？、&、=之外的一到多个字符
+        // [^?&=]*表示：除了？、&、=之外的0到多个字符（任意多个）
+        search.replace(reg, function (rs, $1, $2) {
+            var name = decodeURIComponent($1);
+            var val = decodeURIComponent($2);
+            val = String(val);
+            obj[name] = val;
+            return rs;
+        });
+        return obj;
+    }
+    console.log(getQueryObject(
+        'https://www.baidu.com/baidu?tn=monline_3_dg&ie=utf-8&wd=12306%E7%81%AB%E8%BD%A6%E7%A5%A8%E7%BD%91%E4%B8%8A%E8%AE%A2%E7%A5%A8%E5%AE%98%E7%BD%91'
+    ));
+    // Object {tn: "monline_3_dg", ie: "utf-8", wd: "12306火车票网上订票官网"}
+</script>
+
+</html>

@@ -9,4 +9,5 @@
 
 
 const foo = (a = 'jaj') => console.log(a)
-foo()
+
+
