@@ -26,17 +26,30 @@
     <div class="departmentList"><p>哈哈</p></div>
     <script src="../plug/jquery-3.0.0.min.js"></script>
     <script>
-      $.ajax({
-        url: 'http://69.115.56.95:15700/auth/login',
-        type: 'post',
-        data: {
-          password: 'string',
-          username: 'string'
-        },
-        success: data => {
-          console.log(data)
-        }
-      })
+      // $.ajax({
+      //   url: 'http://69.115.56.95:15700/auth/login',
+      //   type: 'post',
+      //   data: {
+      //     password: 'string',
+      //     username: 'string'
+      //   },
+      //   success: data => {
+      //     console.log(data)
+      //   }
+      // })
+      function getGuid() {
+        const t = new Date().getUTCMilliseconds()
+        const guid = (Math.round(2147483647 * Math.random()) * t) % 1e10
+        return (() => {
+          return guid
+        })
+      }
+      var f1 = getGuid()
+      console.log( f1());
+      console.log( f1());
+      console.log( f1());
+      
+     
     </script>
   </body>
 </html>

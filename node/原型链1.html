@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      Object.prototype.a = 'a'
+      Object.__proto__.a = 'b'
+      function c(){}
+      
+      console.log(1,Function.a)
+      console.log(2,Function.prototype.a)
+      console.log(3,Function.__proto__.a)
+      console.log(4,c.prototype.a)
+      console.log(5,c.__proto__.a)
+      console.log(6,Object.prototype.a)
+      console.log(7,String.a)
+      console.log(8,String.prototype.a)
+      console.log(9,String.__proto__.a)
+    </script>
+  </body>
+</html>
