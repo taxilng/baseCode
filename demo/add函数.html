@@ -1,55 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        'use strict'
-        const sum = (...vals) => vals.reduce((total,num) => total+num)
-        console.log(sum(1,2,3)); 
-        // const sum = (...vals) => {vals.reduce((total,num) => total+num)}
+      'use strict'
+      const sum = (...vals) => vals.reduce((total, num) => total + num)
+      console.log(sum(1, 2, 3))
+      // const sum = (...vals) => {vals.reduce((total,num) => total+num)}
 
+      // function add(...rest) {
 
-        // function add(...rest) {
+      //     let num = rest.reduce((a, b) => a + b, 0)
+      //     let _add = (...args) => {
+      //         num = args.reduce((a, b) => a + b, num)
+      //         return _add
+      //     }
+      //     _add.toString = _add.valueOf = () => num
+      //     return _add
 
-        //     let num = rest.reduce((a, b) => a + b, 0)
-        //     let _add = (...args) => {
-        //         num = args.reduce((a, b) => a + b, num)
-        //         return _add
-        //     }
-        //     _add.toString = _add.valueOf = () => num
-        //     return _add
+      // }
 
-        // }
+      function add(...rest) {
+        const sum = (vals, initVal) => vals.reduce((a, b) => a + b, initVal),
+          num = sum(rest, 0),
+          _add = (...args) => add(sum(args, num))
+        _add.toString = _add.valueOf = () => num
+        return _add
+      }
 
-        function add(...rest) {
-            const sum = (vals, initVal) => vals.reduce((a, b) => a + b, initVal),
-                num = sum(rest, 0),
-                _add = (...args) => add(sum(args, num))
-            _add.toString = _add.valueOf = () => num
-            return _add
+      console.log(add(1, 2, 3))
+      console.log(add(1)(2)(3))
+      console.log(add(1, 2)(2)(3))
+      console.log(add(1, 2)(2, 3)(3))
+
+      function addme(...args) {
+        const fn = (...newArgs) => addme(...args.concat(newArgs))
+        fn.valueOf = () => args.reduce((a, b) => a + b)
+        return fn
+      }
+      console.log(addme(1, 2)(3)(4))
+
+      const arr = [1, [2, [3, 'a', [4]]]]
+
+      function flatten(arr) {
+        while (arr.some(item => Array.isArray(item))) {
+          arr = [].concat(...arr)
         }
-  
-
-        console.log(add(1, 2, 3));
-        console.log(add(1)(2)(3));
-        console.log(add(1, 2)(2)(3));
-        console.log(add(1, 2)(2, 3)(3));
-
-
-        function addme (...args){
-            const fn = (...newArgs) => addme(...args.concat(newArgs))
-            fn.valueOf = () => args.reduce((a,b) => a+b)
-            return fn
-        }
-        console.log(addme(1,2)(3)(4));
+        return arr
+      }
+      console.log(flatten(arr))
     </script>
-</body>
-
+  </body>
 </html>

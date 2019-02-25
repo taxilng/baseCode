@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="UTF-8" />
+    <title>anchor</title>
+  </head>
+
+  <body></body>
+  <script>
+    // 1 2 3 4 5
+    // let a = 2// 分段区间
+    // let b = Math.ceil(100/a) // 几段呢
+    let sum = 100
+    for (let i = 1; i < 100; i++) {
+      const b = Math.ceil(100 / i) //分成几段
+      sum = Math.min(sum, b + i)
+      if(sum === 20){
+        console.log(b,i);
+        
+      }
+    }
+    console.log(sum);
+    
+  </script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      'use strict'
+      let a = [
+        {
+          key: 1,
+          value: '今天'
+        },
+        {
+          key: 2,
+          value: '明天'
+        },
+        {
+          key: 3,
+          value: '我'
+        },
+        {
+          key: 4,
+          value: '你'
+        },
+        {
+          key: 5,
+          value: '吃饭'
+        }
+      ]
+
+      let b1 = [1, 3, 5] // 今天我吃饭
+      let b2 = [2, 4, 5] // 明天你吃饭
+      const c1 = b1.reduce((total, cur) => {
+        return total + a[cur-1].value
+      },'')
+      console.log(c1);
+      
+    </script>
+  </body>
+</html>

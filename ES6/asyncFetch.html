@@ -12,9 +12,20 @@
     <div></div>
     <input id="File1" type="file" accept=".xls,.doc,.txt,.pdf" />
     <script>
-      const url = 'https://cnodejs.org/api/v1/topics'
+      // const url = 'https://cnodejs.org/api/v1/topics'
+      const url = 'http://69.115.56.95:15700/auth/login'
+      let formData = new FormData()
+      formData.append('username', 'hello')
+      formData.append('password', '1111aaaa')
       async function go() {
-        let response = await fetch(url)
+        let response = await fetch(url, {
+          method: 'POST',
+          body: formData, //请求体
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          }
+        })
         let data = await response.json()
         console.log(data)
         return data
