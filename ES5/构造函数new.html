@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      'use strict'
+      Function.prototype.method = function(name, func) {
+        this.prototype[name] = func
+        return this
+      }
+      Function.method('new', function() {
+        var that = Object.create(this.prototype)
+        var ohter = this.apply(that, arguments)
+        return (typeof ohter === 'object' && ohter) || that
+      })
+      var Mammal = function(name) {
+        this.name = name
+      }
+      Mammal.prototype.get_name = function() {
+        return this.name
+      }
+      var myMammal = Mammal.new('zs')
+      console.log(myMammal.get_name());
+      
+    </script>
+  </body>
+</html>
