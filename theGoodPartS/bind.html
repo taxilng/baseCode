@@ -22,8 +22,9 @@
           return method.apply(that, args.concat(slice.apply(arguments, [0])))
         }
       })
-      
+
       var x = function(...myVals){
+        console.log(myVals);
         return this.value + myVals.reduce((total, cur) => total + cur)
       }.bind({value: 6},2)
       console.log(x(3))
