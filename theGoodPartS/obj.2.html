@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      'use strict'
+      var emotionList = [
+        {
+          name: '全部',
+          value: -1
+        },
+        {
+          name: '负面',
+          value: 0
+        },
+        {
+          name: '中性',
+          value: 1
+        },
+        {
+          name: '正面',
+          value: 2
+        }
+      ]
+      var newArr = emotionList.filter(v => v.value !== -1).map(v => v.name)
+      console.log(newArr)
+    </script>
+  </body>
+</html>

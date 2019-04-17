@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      'use strict'
+      const arr = [
+        {
+          id: 1,
+          docName: '一级目录1',
+          subDocList: [
+            {
+              id: 5,
+              docName: '二级目录1-1',
+              subDocList: [
+                {
+                  id: 6,
+                  docName: '三级目录1-1-1',
+                  subDocList: []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 2,
+          docName: '一级目录2',
+          subDocList: [
+            {
+              id: 7,
+              docName: '二级目录2-1',
+              subDocList: [
+                {
+                  id: 8,
+                  docName: '三级目录2-1-1',
+                  subDocList: []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 3,
+          docName: '一级目录3',
+          subDocList: [
+            {
+              id: 9,
+              docName: '二级目录3-1',
+              subDocList: []
+            }
+          ]
+        }
+      ]
+
+      function recArray(sourceArr) {
+        const newArr = []
+        function rcursive(arr) {
+          const len = arr.length
+          arr.forEach(v => {
+            if(len) {
+              newArr.push({id:v.id,docName: v.docName})
+              const sublen = v.subDocList.length
+              if(sublen) {
+                rcursive(v.subDocList)
+              }
+            }
+          })
+        }
+        rcursive(sourceArr)
+        return newArr
+      }
+      const myArr = recArray(arr)
+      console.log(myArr);
+       
+    </script>
+  </body>
+</html>

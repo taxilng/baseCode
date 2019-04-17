@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+  <iframe height=498 width=510 src='http://player.youku.com/embed/XNDEyOTc2Nzc0OA==' frameborder=0 'allowfullscreen'></iframe>
+<embed src='http://player.youku.com/player.php/sid/XNDEyOTc2Nzc0OA==/v.swf' allowFullScreen='true' quality='high' width='480' height='400' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+    <script>
+      'use strict'
+      function curry(fn, ...args) {
+        const length = fn.length
+        let lists = args || []
+        let listLen
+        return function(..._args) {
+          lists = [...lists, ..._args]
+          listLen = lists.length
+          if (listLen < length) {
+            const that = lists
+            lists = []
+            return curry(fn, ...that)
+          } else if (listLen === length) {
+            const that = lists
+            lists = []
+            return fn.apply(this, that)
+          }
+        }
+      }
+      var add = (a, b, c) => a + b + c
+      var curryAdd = curry(add)
+      // 以下输出结果都相同
+      
+      console.log(curryAdd(1, 2, 3)); // 6
+      console.log(curryAdd(1, 2)(3)); // 6
+      console.log(curryAdd(1)(2)(3)); // 6
+      console.log(curryAdd(1)(2, 3)); // 6
+    </script>
+  </body>
+</html>
