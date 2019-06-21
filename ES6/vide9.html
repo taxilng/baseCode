@@ -49,6 +49,11 @@
         ></iframe>
 
         <script type="text/javascript">
+            try {
+                window.openDatabase(null, null, null, null)
+            } catch (_) {
+                alert('您处于无痕浏览，无法为您保存')
+            }
             var ifra = document.querySelector('iframe')
             var box = document.querySelector('#box')
             var movSrc = document.querySelector('#movSrc')
