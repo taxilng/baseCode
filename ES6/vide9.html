@@ -50,7 +50,7 @@
 
         <script type="text/javascript">
             try {
-                window.openDatabase(null, null, null, null)
+                localStorage.setItem('test', 1)
             } catch (_) {
                 alert('您处于无痕浏览，无法为您保存')
             }
