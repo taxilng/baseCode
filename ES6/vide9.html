@@ -38,6 +38,7 @@
         <button id="btn">保存网址</button>
         <span id="random"></span>
         <input type="text" id="movSrc" /> <button id="loadMov">加载视频</button>
+        <button id="randomMov">随机视频</button>
         <iframe
             width="100%"
             frameborder="0"
@@ -57,6 +58,7 @@
             var ifra = document.querySelector('iframe')
             var box = document.querySelector('#box')
             var movSrc = document.querySelector('#movSrc')
+            var randomMov = document.querySelector('#randomMov')
             var id = localStorage.getItem('id')
             var num = parseInt(Math.random() * 30000)
             ifra.height = window.innerHeight - 50
@@ -73,6 +75,11 @@
             document.querySelector('#loadMov').onclick = () => {
                 var src = document.querySelector('#movSrc').value
                 ifra.src = `https://yaoshe${id}.com/embed/${src}`
+            }
+            randomMov.onclick = () => {
+                var num = parseInt(Math.random() * 30000)
+                movSrc.value = document.querySelector('#random').innerHTML = num
+                ifra.src = `https://yaoshe${id}.com/embed/${num}`
             }
         </script>
     </body>
