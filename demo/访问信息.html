@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>anchor</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        margin: 20px;
+      }
+      h4 {
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      h4::after {
+        content: '';
+        width: 7px;
+        display: inline-block;
+        margin-left: 10px;
+        height: 7px;
+        border-top: 1px solid #aaa;
+        transform: rotate(-45deg) scale(1);
+        border-right: 1px solid #aaa;
+      }
+      li {
+        list-style: none;
+      }
+      .showList li {
+        font-size: 12px;
+        display: flex;
+        padding: 5px 0;
+      }
+      .showList li span:first-child {
+        width: 100px;
+        color: #797979;
+      }
+      .showList li span:nth-child(2) {
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <h4>访问信息</h4>
+      <ul class="showList">
+        <li>
+          <span>接入号名称</span>
+          <span>硅基智能</span>
+        </li>
+        <li>
+          <span>接入方式</span>
+          <span>微信咨询</span>
+        </li>
+        <li>
+          <span>浏览器</span>
+          <span>无</span>
+        </li>
+        <li>
+          <span>操作系统</span>
+          <span>无</span>
+        </li>
+        <li>
+          <span>地域&IP地址</span>
+          <span></span>
+        </li>
+        <li>
+          <span>搜索来源</span>
+          <span></span>
+        </li>
+        <li>
+          <span>搜索来源关键字</span>
+          <span></span>
+        </li>
+        <li>
+          <span>上级来源页面</span>
+          <span>未知来源</span>
+        </li>
+        <li>
+          <span>会话来源页面</span>
+          <span>未知来源</span>
+        </li>
+        <li>
+          <span>访客着陆页面</span>
+          <span>未知</span>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

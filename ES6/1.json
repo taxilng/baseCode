@@ -1,0 +1,98 @@
+{
+  "ver1.0b": {
+    "name": "模型一",
+    "ip": "192.168.1.89",
+    "display_info": {
+      "szj": {
+        "label": "女声1",
+        "speakId": "szj",
+        "url": "/static/szj.wav",
+        "port": 20000
+      },
+      "mh": {
+        "label": "女声2",
+        "speakId": "mh",
+        "url": "/static/mh.wav",
+        "port": 20000
+      },
+      "sy": {
+        "label": "女声7",
+        "speakId": "sy",
+        "url": "/static/sy.wav",
+        "port": 20000
+      }
+    }
+  },
+  "ver2.2a": {
+    "name": "模型二",
+    "ip": "192.168.1.156",
+    "display_info": {
+      "szj": {
+        "label": "女声1",
+        "speakId": "szj",
+        "url": "/static/szj.wav",
+        "port": 9100
+      },
+      "mh": {
+        "label": "女声2",
+        "speakId": "mh",
+        "url": "/static/mh.wav",
+        "port": 9200
+      },
+      "yq": {
+        "label": "女声3",
+        "speakId": "yq",
+        "url": "/static/yq.wav",
+        "port": 9300
+      },
+      "tz": {
+        "label": "女声4",
+        "speakId": "tz",
+        "url": "/static/tz.wav",
+        "port": 9400
+      },
+      "lcl": {
+        "label": "女声5",
+        "speakId": "lcl",
+        "url": "/static/lcl.wav",
+        "port": 9500
+      },
+      "chm": {
+        "label": "女声6",
+        "speakId": "chm",
+        "url": "/static/chm.wav",
+        "port": 9600
+      },
+      "sy": {
+        "label": "女声7",
+        "speakId": "sy",
+        "url": "/static/sy.wav",
+        "port": 9700
+      },
+      "ss": {
+        "label": "女声8",
+        "speakId": "ss",
+        "url": "/static/ss.wav",
+        "port": 9800
+      }
+    }
+  },
+  "ver3.2a": {
+    "name": "模型三",
+    "ip": "192.168.1.156",
+    "display_info": {
+      "mh": {
+        "label": "女声2",
+        "speakId": "mh",
+        "url": "/static/mh.wav",
+        "port": 9200
+      },
+      "ss": {
+        "label": "女声8",
+        "speakId": "ss",
+        "url": "/static/ss.wav",
+        "port": 9800
+      }
+    }
+  }
+}

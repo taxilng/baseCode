@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>查询音频合成时间</title>
+    <link rel="stylesheet" href="./bootstrap.min.css" />
+    <script src="./jquery.1.9.1.js"></script>
+    <style>
+      body,
+      div,
+      span,
+      header,
+      footer,
+      nav,
+      section,
+      aside,
+      article,
+      ul,
+      dl,
+      dt,
+      dd,
+      li,
+      a,
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      i,
+      b,
+      textarea,
+      button,
+      input,
+      select,
+      figure,
+      figcaption {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        font-style: normal;
+        text-decoration: none;
+        border: none;
+        font-weight: normal;
+        font-family: 'Microsoft Yahei';
+        box-sizing: border-box;
+        outline: 0;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body {
+        margin: 20px;
+      }
+      ul.result li{
+          padding-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="phoneId">PhoneId</label>
+        <input type="text" class="form-control" id="phoneId" placeholder="请输入PhoneId" />
+      </div>
+      <div class="form-group">
+        <label for="domain">域名</label>
+        <input type="text" class="form-control" id="domain" placeholder="请输入域名" />
+      </div>
+      <div class="form-group">
+        <label for="phone">电话</label>
+        <input type="text" class="form-control" id="phone" placeholder="请输入电话" />
+      </div>
+      <button type="button" class="btn btn-default">提交</button>
+    </form>
+    <ul class="result">
+      <li><span>状态: </span> <b class="status"></b></li>
+      <li><span>时间: </span> <b class="time"></b></li>
+      <li class="dataDetai"></li>
+    </ul>
+  </body>
+  <script>
+
+    function parseTime(time, cFormat) {
+      if (arguments.length === 0) {
+        return null
+      }
+      const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}'
+      let date
+      if (typeof time === 'object') {
+        date = time
+      } else {
+        if (typeof time === 'string' && /^[0-9]+$/.test(time)) {
+          time = parseInt(time)
+        }
+        if (typeof time === 'number' && time.toString().length === 10) {
+          time = time * 1000
+        }
+        date = new Date(time)
+      }
+      const formatObj = {
+        y: date.getFullYear(),
+        m: date.getMonth() + 1,
+        d: date.getDate(),
+        h: date.getHours(),
+        i: date.getMinutes(),
+        s: date.getSeconds(),
+        a: date.getDay(),
+      }
+      const time_str = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
+        let value = formatObj[key]
+        // Note: getDay() returns 0 on Sunday
+        if (key === 'a') {
+          return ['日', '一', '二', '三', '四', '五', '六'][value]
+        }
+        if (result.length > 0 && value < 10) {
+          value = '0' + value
+        }
+        return value || 0
+      })
+      return time_str
+    }
+
+    $(function() {
+      $('.btn').on('click', function(e) {
+        e.preventDefault()
+        console.log($('#phoneId').val())
+        console.log($('#domain').val())
+        console.log($('#phone').val())
+        $.ajax({
+          url: '/status/get',
+          method: 'post',
+          data: {
+            task_id: $('#phoneId').val(),
+            phone_num: $('#phone').val(),
+            domain: $('#domain').val(),
+          },
+        })
+          .done(function(res) {
+            const statuArray = ['任务入库', '任务处于队列中', '任务处理完成']
+            $('.status').text(statuArray[res.status])
+            $('.time').text(parseTime(res.time))
+            $('.dataDetai').text(JSON.stringify(res.data))
+          })
+          .fail(function(error) {
+            console.log(error)
+            // var res = {
+            //   status: 0,
+            //   time: 1559027358311,
+            //   data: { ss: 1 },
+            // }
+            // const statuArray = ['任务入库', '任务处于队列中', '任务处理完成']
+            // $('.status').text(statuArray[res.status])
+            // $('.time').text(parseTime(res.time))
+            // $('.dataDetai').text(JSON.stringify(res.data))
+          })
+      })
+    })
+  </script>
+</html>

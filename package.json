@@ -35,6 +35,7 @@
     "co": "^4.6.0",
     "dayjs": "^1.7.7",
     "eslint-plugin-html": "^3.2.2",
+    "jquery": "^3.4.1",
     "superagent": "^4.0.0-beta.5",
     "vconsole": "^3.2.0"
   }
