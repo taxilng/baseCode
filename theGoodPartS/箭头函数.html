@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // 'use strict'
+      const a = {
+        count: 1,
+        prt: function() {
+          ;(() => {
+            console.log(this)
+          })()
+        }
+      }
+      var b = a.prt
+      b()
+
+      // const log = console.log
+      // const c = {
+      //   log
+      // }
+      // c.log(1)
+
+      var handler = {
+        id: '123456',
+
+        init: function() {
+          document.addEventListener(
+            'click',
+            event => this.doSomething(event.type),
+            false
+          )
+        },
+
+        doSomething: function(type) {
+          console.log('Handling ' + type + ' for ' + this.id)
+        }
+      }
+      var d = handler.init
+      d()
+    </script>
+  </body>
+</html>

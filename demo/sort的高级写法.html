@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title>双向数据绑定</title>
+  </head>
+
+  <body>
+    <script>
+      const randomArr = () =>
+        Array.from({ length: 100000 }, () => Math.floor(Math.random() * 100))
+      // console.log(arr1)
+      // const arr = [6, 5, 4, 3, 2, 1, 7, 8, 3, 5, 4, 6, 8, 2, 12, 545, 745, 323, 7,1,3,5,1,7]
+      const mysort = arr => {
+        const MIN = Math.min(...arr)
+        const MAX = Math.max(...arr)
+        var obj = {
+          7: MIN - 7,
+          5: MIN - 5,
+          3: MIN - 3,
+          1: MAX + 1
+        }
+        const newArr = arr.sort((a, b) => {
+          const compareA = obj[a] ? obj[a] : a
+          const compareB = obj[b] ? obj[b] : b
+          return compareA - compareB
+        })
+        return newArr
+      }
+
+      const jojosort = arr => {
+        var arr1 = arr.sort((a, b) => a - b)
+        var obj = { a: [], b: [], c: [], d: [], e: [] }
+        arr1.forEach(i => {
+          switch (i) {
+            case 7:
+              obj.a.push(i)
+              break
+            case 5:
+              obj.b.push(i)
+              break
+            case 3:
+              obj.c.push(i)
+              break
+            case 1:
+              obj.d.push(i)
+              break
+            default:
+              obj.e.push(i)
+              break
+          }
+        })
+
+        const na = obj.a.concat(obj.b, obj.c, obj.c, obj.e, obj.d)
+        return na
+      }
+
+      const niaoSort = arr => {
+        const obj = {
+          7: 3,
+          5: 2,
+          3: 1,
+          1: -1
+        }
+        const newArr = arr.sort((a, b) => {
+          const objA = obj[a]
+          const objB = obj[b]
+          const compareA = objA ? b - objA : a
+          const compareB = objB ? a - objB : b
+          return compareA - compareB
+        })
+        return newArr
+      }
+
+      // const arr3 = randomArr()
+      // console.time('niao')
+      // console.log(niaoSort(arr3))
+      // niaoSort(arr3)
+      // console.timeEnd('niao')
+
+      // const arr1 = randomArr()
+      // console.time('telankes')
+      // mysort(arr1)
+      // console.log(mysort(arr1))
+      // console.timeEnd('telankes')
+
+      const arr2 = randomArr()
+      console.time('jojo')
+      jojosort(arr2)
+      // console.log(jojosort(arr2))
+      console.timeEnd('jojo')
+    </script>
+  </body>
+</html>

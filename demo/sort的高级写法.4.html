@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title>双向数据绑定</title>
+  </head>
+
+  <body>
+    <script>
+      const randomArr = () =>
+        Array.from({ length: 1000000 }, () => Math.floor(Math.random() * 100))
+
+      const niaoSort = arr => {
+        const obj = {
+          7: 3,
+          5: 2,
+          3: 1,
+          1: -1
+        }
+        const newArr = arr.sort((a, b) => {
+          const objA = obj[a]
+          const objB = obj[b]
+          if (objA && objB) {
+            return objB - objA
+          } else if (objA !== undefined || objB !== undefined) {
+            return -objA || objB
+          } else {
+            return a - b
+          }
+        })
+        return newArr
+      }
+
+      const arr3 = randomArr()
+      console.time('dai')
+      console.log(niaoSort(arr3))
+      niaoSort(arr3)
+      console.timeEnd('dai')
+    </script>
+  </body>
+</html>

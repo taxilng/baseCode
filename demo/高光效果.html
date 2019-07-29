@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+      a,
+      img {
+        border: 0;
+      }
+      body {
+        font: 12px/180% Arial, Helvetica, sans-serif, '新宋体';
+      }
+
+      .menu_box {
+        width: 480px;
+        margin: 0 auto;
+      }
+      @keyframes aniBlink120 {
+        from {
+          margin-left: -500px;
+        }
+        to {
+          margin-left: 500px;
+        }
+      }
+      .mod_imgLight {
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+      .mod_imgLight a {
+        display: inline-block;
+      }
+      .mod_imgLight a:before {
+        content: '';
+        position: absolute;
+        width: 500px;
+        height: 295px;
+        margin-top: 0px;
+        margin-left: -500px;
+        overflow: hidden;
+        z-index: 6;
+        background: gradient(
+          linear,
+          left top,
+          right top,
+          color-stop(0%, rgba(255, 255, 255, 0)),
+          color-stop(50%, rgba(255, 255, 255, 0.4)),
+          color-stop(100%, rgba(255, 255, 255, 0))
+        );
+        background: -webkit-linear-gradient(
+          left,
+          rgba(255, 255, 255, 0) 0,
+          rgba(255, 255, 255, 0.4) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transform: skewX(-25deg);
+      }
+      .mod_imgLight:hover a:before {
+        animation: aniBlink120 1s ease-out forwards;
+      }
+    </style>
+    <title>CSS3 图片扫光</title>
+  </head>
+
+  <body>
+    <div class="menu_box">
+      <div class="mod_imgLight">
+        <a target="_blank" title="银河护卫队" href="#">
+          <img
+            width="520"
+            alt="银河护卫队"
+            src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533270943247&di=d011e1d9a66027e700d9a154f29eea76&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F3c6d55fbb2fb431603f48e4f28a4462309f7d318.jpg"
+          />
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

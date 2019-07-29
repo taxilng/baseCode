@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="UTF-8" />
+    <title>anchor</title>
+  </head>
+
+  <body>
+    <div id="cj" style="margin-left:130px;margin-top:60px">
+      <div class="r2">
+        <input type="radio" name="zw" value="天花板" />
+        <label>天花板</label>&nbsp; <input type="text" id="t1" class="c1" />个
+      </div>
+      <div class="r2">
+        <input type="radio" name="zw" value="水磨钻打楼层洞" />
+        <label>水磨钻打楼层洞</label>&nbsp;
+        <input type="text" id="t2" class="c1" />个
+      </div>
+      <div class="r2">
+        <input type="radio" name="zw" value="普通钻打楼层洞" />
+        <label>普通钻打楼层洞</label>&nbsp;
+        <input type="text" id="t3" class="c1" />个
+      </div>
+      <div class="r2">
+        <input type="radio" name="zw" value="钉槽/管" />
+        <label>钉槽 / 管</label>&nbsp; <input type="text" id="t4" class="c" />个
+      </div>
+    </div>
+
+    <input type="text" id="sq" class="sq" />
+    <button id="ss">点击</button>
+  </body>
+  <script src="../../plug/jquery-3.0.0.min.js"></script>
+  <script>
+    $('#ss').click(function() {
+      var cengbj1 = $('input:radio:checked').val()
+      var cengbjnumber
+      if (cengbj1 == '天花板') {
+        cengbjnumber = $('#t1').val()
+      }
+      if (cengbj1 == '水磨钻打楼层洞') {
+        cengbjnumber = $('#t2').val()
+      }
+      if (cengbj1 == '普通钻打楼层洞') {
+        cengbjnumber = $('#t3').val()
+      }
+      if (cengbj1 == '钉槽/管') {
+        cengbjnumber = $('#t4').val()
+      }
+      console.log(cengbj1)
+      console.log(cengbjnumber)
+    })
+  </script>
+</html>

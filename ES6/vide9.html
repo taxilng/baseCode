@@ -1,32 +1,86 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>vivo</title>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"
+        />
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+            }
+            * {
+                -webkit-appearance: none;
+                border-radius: 0;
+            }
+            iframe {
+                height: calc(100% - 60px);
+            }
+            input {
+                /* width: 100px; */
+                height: 40px;
+            }
+            button {
+                width: 80px;
+                height: 50px;
+            }
+        </style>
+    </head>
 
-<head>
-    <title></title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum=1.0,user-scalable=no">
-    <meta name="format-detection" content="telephone=no, email=no">
-</head>
+    <body>
+        <input type="text" id="box" placeholder="网址" />
+        <button id="btn">保存网址</button>
+        <span id="random"></span>
+        <input type="text" id="movSrc" /> <button id="loadMov">加载视频</button>
+        <button id="randomMov">随机视频</button>
+        <iframe
+            width="100%"
+            frameborder="0"
+            allowfullscreen
+            webkitallowfullscreen
+            mozallowfullscreen
+            oallowfullscreen
+            msallowfullscreen
+        ></iframe>
 
-<body>
-    <input type="text" id="box">
-    <button id="btn">查询</button>
-    <iframe width="100%" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+        <script type="text/javascript">
+            try {
+                localStorage.setItem('test', 1)
+            } catch (_) {
+                alert('您处于无痕浏览，无法为您保存')
+            }
+            var ifra = document.querySelector('iframe')
+            var box = document.querySelector('#box')
+            var movSrc = document.querySelector('#movSrc')
+            var randomMov = document.querySelector('#randomMov')
+            var id = localStorage.getItem('id')
+            var num = parseInt(Math.random() * 30000)
+            ifra.height = window.innerHeight - 50
+            movSrc.value = document.querySelector('#random').innerHTML = num
 
-    <script type="text/javascript">
-        var ifra = document.querySelector('iframe');
-        ifra.height = window.innerHeight - 50;
-        var num = parseInt(Math.random() * 9000) + 1000;
-        let id = localStorage.getItem('id');
-        // ifra.src = 'https://yaoshe11.com/embed/1' + num;
-        ifra.src = `https://yaoshe${id}.com/embed/1${num}`;
+            box.value = id
+            // ifra.src = 'https://yaoshe11.com/embed/1' + num;
+            ifra.src = `https://yaoshe${id}.com/embed/${num}`
 
-        document.querySelector('#btn').onclick = () => {
-            let id = document.querySelector("#box").value;
-            localStorage.setItem('id', id)
-
-        }
-    </script>
-</body>
-
+            document.querySelector('#btn').onclick = () => {
+                var id = document.querySelector('#box').value
+                localStorage.setItem('id', id)
+            }
+            document.querySelector('#loadMov').onclick = () => {
+                var src = document.querySelector('#movSrc').value
+                ifra.src = `https://yaoshe${id}.com/embed/${src}`
+            }
+            randomMov.onclick = () => {
+                var num = parseInt(Math.random() * 30000)
+                movSrc.value = document.querySelector('#random').innerHTML = num
+                ifra.src = `https://yaoshe${id}.com/embed/${num}`
+            }
+        </script>
+    </body>
 </html>

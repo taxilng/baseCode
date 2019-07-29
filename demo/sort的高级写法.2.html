@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title>双向数据绑定</title>
+  </head>
+
+  <body>
+    <script>
+      const randomArr = () =>
+        Array.from({ length: 1000000 }, () => Math.floor(Math.random() * 100))
+
+      const jojosort = arr => {
+        var arr1 = arr.sort((a, b) => a - b)
+        var obj = { a: [], b: [], c: [], d: [], e: [] }
+        arr1.forEach(i => {
+          switch (i) {
+            case 7:
+              obj.a.push(i)
+              break
+            case 5:
+              obj.b.push(i)
+              break
+            case 3:
+              obj.c.push(i)
+              break
+            case 1:
+              obj.d.push(i)
+              break
+            default:
+              obj.e.push(i)
+              break
+          }
+        })
+
+        const na = obj.a.concat(obj.b, obj.c, obj.e, obj.d)
+        return na
+        // return [...obj.a,...obj.b,...obj.c,...obj.e,...obj.d]
+      }
+
+      const arr2 = randomArr()
+      console.time('jojo')
+      jojosort(arr2)
+      console.log(jojosort(arr2))
+      console.timeEnd('jojo')
+    </script>
+  </body>
+</html>

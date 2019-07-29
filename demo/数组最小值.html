@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>双向数据绑定</title>
+</head>
+
+<body>
+
+    <script>
+        const arr = [6, 5, 4, 3, 2, 1, 7, 8, 3, 5, 4, 6, 8, 2, 12, 545, 745, 323, 7]
+        const minArr = (arr) => {
+            // let minNum = arr[0]
+            // arr.forEach(item => {
+            //     minNum = item < minNum ? item : minNum
+            // });
+            // return minNum
+            return arr.reduce((total,current) => Math.min(total,current))
+        }
+        console.log(minArr(arr));
+        console.log(Math.min(...arr));
+    </script>
+</body>
+
+</html> 

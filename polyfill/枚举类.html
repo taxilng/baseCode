@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      // var Color
+      // ;(function(Color) {
+      //   Color[(Color['Red'] = 0)] = 'Red'
+      //   // Color[0] = 'Red'
+      //   // Color['red'] = 0
+
+      //   Color[(Color['Green'] = 1)] = 'Green'
+      //   Color[(Color['Blue'] = 2)] = 'Blue'
+      // })(Color || (Color = {}))
+      // var c = Color.Green
+      // console.log(c)
+
+      // const arr = [1, 2, 3, 4]
+      // for (let i of arr) {
+      //   if (i == 2) {
+      //     console.log(arr[i])
+      //     break
+      //   }
+      // }
+      // var a = 1
+      // function test() {
+      //   a = 2
+      //   console.log(a)
+      //   a = 3
+      //   console.log(a)
+      // }
+      // test()
+      // console.log(a)
+
+      // const pow = (x, n) => {
+      //   if (n === 0) {
+      //     return 1
+      //   }
+      //   if (n > 0) {
+      //     return new Array(n).fill(x).reduce((total, cur) => total * cur)
+      //   }
+      //   if (n < 0) {
+      //     return 1/new Array(-n).fill(x).reduce((total, cur) => total * cur)
+      //   }
+
+      // }
+      // console.log(pow(100,2));
+      // console.log(pow(2,-3));
+      // console.log(pow(2,0));
+      
+      // let matrix = [
+      //   [1,2,3],
+      //   [4,5,6],
+      //   [7,8,9],
+      // ]
+      // const len = matrix.length
+      // tempArr = [[],[],[]]
+      // matrix.forEach((sunArr,i) => {
+      //   matrix.forEach((item,j) => {
+      //     matrix[len - i - 1].unshift(item[len - i - 1])
+      //     // sunArr.pop()
+      //   })
+      // })
+      // console.log(matrix);
+
+      function a() {
+        var num = 100
+        function b() {
+          num++
+          console.log(num);
+        }
+        return b
+      }
+      var demo = a()
+      demo()
+      demo()
+    </script>
+  </body>
+</html>
