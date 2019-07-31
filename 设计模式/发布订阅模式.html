@@ -130,9 +130,17 @@
       return Event
     })()
 
-    Event.trigger('click', 1)
     Event.listen('click', function(a) {
       console.log(a) // 输出：1
     })
+    Event.trigger('click', 1)
+    Event.create('namespace1').listen('click', function(a) {
+      console.log(a) // 输出：1
+    })
+    Event.create('namespace1').trigger('click', 2)
+    Event.create('namespace2').listen('click', function(a) {
+      console.log(a) // 输出：2
+    })
+    Event.create('namespace2').trigger('click', 3)
   </script>
 </html>
