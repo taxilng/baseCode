@@ -4008,6 +4008,11 @@ vconsole@^3.2.0:
   resolved "https://registry.npm.taobao.org/vconsole/download/vconsole-3.3.2.tgz?cache=0&sync_timestamp=1562225269083&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvconsole%2Fdownload%2Fvconsole-3.3.2.tgz#07424f8de2e5e2586c504042093948435ed2de06"
   integrity sha1-B0JPjeLl4lhsUEBCCTlIQ17S3gY=
 
+verto@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.npm.taobao.org/verto/download/verto-0.1.1.tgz#faa4c03c5861818027f0937f78aace587f7ea79d"
+  integrity sha1-+qTAPFhhgYAn8JN/eKrOWH9+p50=
+
 vinyl-fs@^3.0.0:
   version "3.0.3"
   resolved "https://registry.npm.taobao.org/vinyl-fs/download/vinyl-fs-3.0.3.tgz#c85849405f67428feabbbd5c5dbdd64f47d31bc7"
