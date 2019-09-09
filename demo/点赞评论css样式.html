@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="UTF-8" />
+        <title>anchor</title>
+        <style>
+            .send {
+                display: none;
+            }
+            .input:focus ~ .send {
+                display: block;
+            }
+            .input:valid ~ .send {
+                display: block;
+                color: red;
+            }
+            .input:focus ~ .like,
+            .input:valid ~ .like {
+                display: none;
+            }
+            .input2:empty::before {
+                content: attr(placeholder);
+            }
+            input,
+            .tab-content {
+                display: none;
+            }
+            #tab1:checked ~ #content1,
+            #tab2:checked ~ #content2 {
+                display: block;
+            }
+
+            .list li:nth-last-child(n + 4) ~ li,
+            .list li:nth-last-child(n + 4):first-child {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" class="input" required />
+        <div class="like">点赞</div>
+        <div class="send">发送</div>
+        <div class="input2" contenteditable placeholder="请输入文字"></div>
+
+        <input id="tab1" type="radio" name="tabs" checked />
+        <label for="tab1">TAB1</label>
+        <input id="tab2" type="radio" name="tabs" />
+        <label for="tab2">TAB2</label>
+        <div id="content1" class="tab-content">CONTENT1</div>
+        <div id="content2" class="tab-content">CONTENT2</div>
+
+
+        <ul class="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <ul class="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </body>
+</html>
