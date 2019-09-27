@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // var str = '()[]{}'
+      // var str = '(]'
+      // var str = '([)]'
+      // var str = '{'
+      var obj = {
+        '(': ')',
+        '[': ']',
+        '{': '}',
+      }
+      var isValid = function(s) {
+        var index = -1,
+          len = s.length,
+          next = null
+        ;(flag = true), (stack = [])
+        while (++index < len) {
+          var cur = s[index],
+            tar = obj[cur]
+          if (tar) {
+            stack.push(tar)
+          } else if (stack.pop() !== cur) {
+            flag = false
+            break
+          }
+        }
+        if (stack.length) {
+          flag = false
+        }
+        return flag
+      }
+      console.log(isValid(str))
+    </script>
+  </body>
+</html>

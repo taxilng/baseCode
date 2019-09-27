@@ -12,6 +12,10 @@
     <span>dasdasdsgf宽带连接ask来得及卢卡斯发的链接按时打开链接</span>
     <script src="https://cdn.bootcss.com/babel-polyfill/7.0.0-rc.4/polyfill.js"></script>
     <script>
+        window.onbeforeunload=function(e){
+            var e = window.event||e;
+            e.returnValue=("确定离开当前页面吗？");
+        }
         'use strict'
         let groups = [{
             content: [{

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //  输入: dict(词典) = ["cat", "bat", "rat"]
+      // sentence(句子) = "the cattle was rattled by the battery"
+      // 输出: "the cat was rat by the bat"
+      var dict = ['cat', 'bat', 'rat'],
+        sentence = 'the cattle was rattled by the battery'
+      var replaceWords = function(dict, sentence) {
+          var index = -1
+          var length = dict.length
+          var str = ' '+ sentence + ' '
+          while (++index < length) {
+            var cur = dict[index]
+            var reg = new RegExp('(?<=\\s)'+cur+'\\w+(?=\\s)','g')
+            str = str.replace(reg,cur)
+          }
+          return str.trim()
+      }
+      console.log(replaceWords(dict, sentence));
+      
+      
+    </script>
+  </body>
+</html>

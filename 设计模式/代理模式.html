@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>代理模式</title>
+  </head>
+
+  <body></body>
+  <script>
+    var myImage = (function() {
+      var imgNode = document.createElement('img')
+      document.body.appendChild(imgNode)
+      return {
+        setSrc: function(src) {
+          imgNode.src = src
+        },
+      }
+    })()
+    var proxyImage = (function() {
+      var img = new Image()
+      img.onload = function() {
+        setTimeout(() => {
+          myImage.setSrc(this.src)
+        }, 5000);
+      }
+      return {
+        setSrc: function(src) {
+          myImage.setSrc('../static/images/sass2.png')
+          img.src = src
+        },
+      }
+    })()
+    proxyImage.setSrc('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564401579852&di=8e5e280caab16dc90fae2fa4d7d068ae&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201510%2F15%2F20151015210110_xQUCk.jpeg')
+    
+  </script>
+</html>

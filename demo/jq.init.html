@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>anchor</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    'use strict'
+      var jq = function() {
+        if (!(this instanceof jq)) {
+          return new jq()
+        }
+        this.init()
+      }
+      jq.fn = jq.prototype = {
+        init: function() {
+          console.log('初始化')
+        },
+      }
+      // jq(1)
+     new jq(1)
+
+    </script>
+  </body>
+</html>

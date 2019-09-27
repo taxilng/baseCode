@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>代理模式</title>
+  </head>
+
+  <body></body>
+  <script>
+    // var Plane = function() {}
+    // Plane.prototype.fire = function() {
+    //   console.log('发射普通子弹')
+    // }
+    // var MissileDecorator = function(plane) {
+    //   this.plane = plane
+    // }
+    // MissileDecorator.prototype.fire = function() {
+    //   this.plane.fire()
+    //   console.log('发射导弹')
+    // }
+    // var AtomDecorator = function(plane) {
+    //   this.plane = plane
+    // }
+    // AtomDecorator.prototype.fire = function() {
+    //   this.plane.fire()
+    //   console.log('发射原子弹')
+    // }
+    // var plane = new Plane()
+    // plane = new MissileDecorator(plane)
+    // plane = new AtomDecorator(plane)
+    // plane.fire()
+
+    Function.prototype.before = function(beforefn) {
+      var __self = this // 保存原函数的引用
+      return function() {
+        // 返回包含了原函数和新函数的"代理"函数
+        beforefn.apply(this, arguments) // 执行新函数，修正 this
+        return __self.apply(this, arguments) // 执行原函数
+      }
+    }
+
+    Function.prototype.after = function(afterfn) {
+      var __self = this
+      return function() {
+        var ret = __self.apply(this, arguments)
+        afterfn.apply(this, arguments)
+        return ret
+      }
+    }
+
+    var ajax = function(type, url, param) {
+      console.log(param) // 发送 ajax 请求的代码略
+    }
+
+    var getToken = function() {
+      return 'Token'
+    }
+    ajax = ajax.before(function(type, url, param) {
+      param.Token = getToken()
+    })
+    ajax('get', 'http:// xxx.com/userinfo', { name: 'sven' })
+  </script>
+</html>

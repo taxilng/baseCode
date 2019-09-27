@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body></body>
+  <script>
+    // function f2(o, t, s) {
+    //   console.log(o)
+    //   console.log(t)
+    //   console.log(s)
+    // }
+    // var p = 'zs'
+    // var age = 21
+    // f2`${p}is${age}year old`
+
+    // Function.prototype.before = function(beforefn) {
+    //   var __self = this // 保存原函数的引用
+    //   return function() {
+    //     // 返回包含了原函数和新函数的"代理"函数
+    //     beforefn.apply(this, arguments) // 执行新函数，修正 this
+    //     return __self.apply(this, arguments) // 执行原函数
+    //   }
+    // }
+    // Function.prototype.after = function(afterfn) {
+    //   var __self = this
+    //   return function() {
+    //     var ret = __self.apply(this, arguments)
+    //     afterfn.apply(this, arguments)
+    //     return ret
+    //   }
+    // }
+    // var func = function() {
+    //   console.log(2)
+    // }
+    // func = func
+    //   .before(function() {
+    //     console.log(1)
+    //   })
+    //   .after(function() {
+    //     console.log(3)
+    //   })
+    // func()
+
+    // Function.prototype.uncurrying = function() {
+    //   var self = this
+    //   return function() {
+    //     var obj = Array.prototype.shift.call(arguments)
+    //     return self.apply(obj, arguments)
+    //   }
+    // }
+    // var push = Array.prototype.push.uncurrying()
+
+    // ;(function() {
+    //   push(arguments, 4)
+    //   console.log(arguments) // 输出：[1, 2, 3, 4]
+    // })(1, 2, 3)
+
+    // var call = Function.prototype.call.uncurrying()
+    // var fn = function(name) {
+    //   console.log(name)
+    // }
+    // call(fn, window, 'sven')
+
+    // Function.prototype.uncurrying = function() {
+    //   var self = this
+    //   return function() {
+    //     return Function.prototype.apply.apply(self, arguments)
+    //   }
+    // }
+
+    // var push = Array.prototype.push.uncurrying()
+
+    // ;(function() {
+    //   push(arguments, [4, 5])
+    //   console.log(arguments) // 输出：[1, 2, 3, 4]
+    // })(1, 2, 3)
+
+    // var throttle = function(fn, interval) {
+    //   var __self = fn, // 保存需要被延迟执行的函数引用
+    //     timer, // 定时器
+    //     firstTime = true // 是否是第一次调用
+    //   return function() {
+    //     var args = arguments,
+    //       __me = this
+    //     if (firstTime) {
+    //       // 如果是第一次调用，不需延迟执行
+    //       __self.apply(__me, args)
+    //       return (firstTime = false)
+    //     }
+    //     if (timer) {
+    //       // 如果定时器还在，说明前一次延迟执行还没有完成
+    //       return false
+    //     }
+    //     timer = setTimeout(function() {
+    //       // 延迟一段时间执行
+    //       clearTimeout(timer)
+    //       timer = null
+    //       __self.apply(__me, args)
+    //     }, interval || 500)
+    //   }
+    // }
+    // window.onresize = throttle(function() {
+    //   console.log(1)
+    // }, 2500)
+
+    // var Singleton = function(name) {
+    //   this.name = name
+    //   this.instance = null
+    // }
+    // Singleton.prototype.getName = function() {
+    //   console.log(this.name);
+    // }
+    // Singleton.getInstance = function(name) {
+    //   if (!this.instance) {
+    //     this.instance = new Singleton(name)
+    //   }
+    //   return this.instance
+    // }
+    // var a = Singleton.getInstance('sven1')
+    // var b = Singleton.getInstance('sven2')
+    // console.log((a === b));
+    // a.getName()
+    // b.getName()
+
+    // var CreateDiv = function(html) {
+    //   this.html = html
+    //   this.init()
+    // }
+    // CreateDiv.prototype.init = function() {
+    //   var div = document.createElement('div')
+    //   div.innerHTML = this.html
+    //   document.body.appendChild(div)
+    // }
+    // var ProxySingletonCreateDiv = (function() {
+    //   var instance
+    //   return function(html) {
+    //     if (!instance) {
+    //       instance = new CreateDiv(html)
+    //     }
+    //     return instance
+    //   }
+    // })()
+    // var a = ProxySingletonCreateDiv('sven1')
+    // var b = ProxySingletonCreateDiv('sven2')
+    // console.log(a === b)
+
+    var MyApp = {}
+    MyApp.namespace = function(name) {
+      var parts = name.split('.')
+      var current = MyApp
+      for (var i in parts) {
+        if (!current[parts[i]]) {
+          current[parts[i]] = {}
+        }
+        current = current[parts[i]]
+      }
+    }
+    // MyApp.namespace('event')
+    MyApp.namespace('dom.style')
+    console.dir(MyApp)
+  </script>
+</html>

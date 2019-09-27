@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="UTF-8" />
+    <title>anchor</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #wei {
+        width: 500px;
+        height: 600px;
+        margin: 0 auto;
+        border: 0px solid gray;
+      }
+      #wei input {
+        width: 476px;
+        height: 50px;
+        line-height: 50px;
+        padding-left: 20px;
+        font-size: 16px;
+      }
+      #wei ul {
+        height: auto;
+        border: 1px solid #CCC;
+        display: none;
+      }
+      #wei ul li {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        text-indent: 10px;
+        font-size: 16px;
+        list-style: none;
+      }
+      #wei ul li a {
+        text-decoration: none;
+      }
+      #wei ul li:hover {
+        display: block;
+        background: #ccc;
+        color: #fff;
+      }
+      #space-invader {
+        box-shadow: 0 0 0 1em red, 0 1em 0 1em red, -2.5em 1.5em 0 0.5em red, 2.5em 1.5em 0 0.5em red, -3em -3em 0 0 red, 3em -3em 0 0 red, -2em -2em 0 0 red, 2em -2em 0 0 red, -3em -1em 0 0 red, -2em -1em 0 0 red, 2em -1em 0 0 red, 3em -1em 0 0 red, -4em 0 0 0 red, -3em 0 0 0 red, 3em 0 0 0 red, 4em 0 0 0 red, -5em 1em 0 0 red, -4em 1em 0 0 red, 4em 1em 0 0 red, 5em 1em 0 0 red, -5em 2em 0 0 red, 5em 2em 0 0 red, -5em 3em 0 0 red, -3em 3em 0 0 red, 3em 3em 0 0 red, 5em 3em 0 0 red, -2em 4em 0 0 red, -1em 4em 0 0 red, 1em 4em 0 0 red, 2em 4em 0 0 red;
+        background: red;
+        width: 1em;
+        height: 1em;
+        overflow: hidden;
+        margin: 50px 0 70px 165px;
+      }
+    </style>
+  </head>
+  <body ng-controller="show">
+    <a href="../static/images/sass2.png" download="1.jpg">下载图片</a>
+    <a href="http://hbimg.b0.upaiyun.com/0338cbe93580d5e6b0e89f25531541d455f66fda4a6a5-eVWQaf_fw658" download="2.jpg">下载图片2</a>
+    <div id="space-invader"></div>
+    <form action="https://formspree.io/769967440@qq.com" method="post">
+      <input type="text" placeholder="您的姓名" name="name" />
+      <input type="email" placeholder="您的邮箱" name="eamil" />
+      <textarea name="message" id="doc-vld-ta-2-1" minlength="10" placeholder="请输入您的留言"></textarea>
+      <div class="banner_btn pa">
+        <button style="line-height: 41px;" type="submit">发送信息</button>
+      </div>
+    </form>
+  </body>
+
+  <script>
+ ["/system","/system/user","/system/auth","/system/menu","/system/dataDictionaries","/system/processManage","/system/organization","/system/account","/system/processTask","/system/noticeList","/system/product","/system/holidayManage","/robotCenter","/robotCenter/robotManage","/robotCenter/simList","/callCenter","/callCenter/workPlatform","/personCenter","/personCenter/myselfInfo","/personCenter/myselfInfo/userManage","/personCenter/myselfInfo/getData","/taskCenter","/taskCenter/phonelist","/callGroup","/callCenter/callHistory","/taskList","/taskCenter/blackList","/taskCenter/importRecord","/taskCenter/batchExportList","/taskCenter/callStrategy","/botsentence","/botsentence/botsentence_maker","/botsentence/botsentence_approve","/botsentence/botsentence_mytemplate","/botsentence/botsentence_history","/botsentence/botsentence_keywords","/botsentence/botsentence_approveKeywords","/","/home","/countAnalysis","/countAnalysis/callResultCount","/countAnalysis/callFlowAnalysis","/countAnalysis/callStatusAnalysis","/countAnalysis/callThroughAnalysis","/smsCenter","/smsCenter/platformManage","/smsCenter/smsManage","/smsCenter/smsGroupTask","/smsCenter/smsConfigList","/smsCenter/smsSendList","/helpCenter","/helpCenter/useNotebook","/communicationManagement","/communicationManagement/setPort","/communicationManagement/comManage","/communicationManagement/approveAdmin","/communicationManagement/lineMarket","/financeCenter","/financeCenter/rechargeManage","/financeCenter/summaryReport","/newsCenter","/newsCenter/newsMail","/newsCenter/receiveSetting"]
+  </script>
+</html>

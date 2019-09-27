@@ -5,54 +5,263 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <style>
-      .departmentList {
-        height: 47px;
-        font-size: 1.4em;
-        background-color: red;
-      }
-
-      .departmentList > p {
-        margin-left: 48%;
-        padding-top: 8px;
-      }
-    </style>
   </head>
 
-  <body>
-    <div class="departmentList"><p>哈哈</p></div>
-    <div class="departmentList"><p>哈哈</p></div>
-    <div class="departmentList"><p>哈哈</p></div>
-    <div class="departmentList"><p>哈哈</p></div>
-    <script src="../plug/jquery-3.0.0.min.js"></script>
-    <script>
-      // var data = {
-      //   password: 'string',
-      //   username: 'string'
-      // }
-      // $.ajax({
-      //   url: 'http://69.115.56.95:15700/auth/auth/login',
-      //   type: 'post',
-      //   contentType: 'application/json',
-      //   // dataType: 'json',
-      //   data: JSON.stringify(data),
-      //   success: data => {
-      //     console.log(data)
-      //   }
-      // })
-      function getGuid() {
-        const t = new Date().getUTCMilliseconds()
-        const guid = (Math.round(2147483647 * Math.random()) * t) % 1e10
-        return (() => {
-          return guid
-        })
+  <body></body>
+  <!-- <script src="jquery_v3.4.1.js"></script> -->
+  <script src="../plug/jquery.1.9.1.js"></script>
+
+  <script>
+    // $(function() {
+    //   console.log($('body'))
+    // })
+    // 	var preservedScriptAttributes = {
+    // 		type: true,
+    // 		src: true,
+    // 		nonce: true,
+    // 		noModule: true
+    // 	};
+
+    // 	function DOMEval( code, doc ) {
+    // 		doc = doc || document;
+
+    // 		var script = doc.createElement( "script" );
+
+    // 		script.text = code;
+    // 		doc.head.appendChild( script ).parentNode.removeChild( script );
+    //     }
+    //     // DOMEval('console.log(2222)')
+
+    // function toType(obj) {
+    //     return toString.call(obj).slice(8,-1).toLowerCase()
+    // }
+    // console.log(toType(null));
+    // console.log(toType({a:1}));
+    // console.log(toType([1]));
+    // console.log(toType(1));
+    // console.log(toType("h"));
+    // console.log(toType());
+    // console.log(toType(Symbol()));
+    // console.log(toType(true));
+
+    // function toArray(arr) {
+    //     return [].slice.call( arr );
+    // }
+
+    // var likeArray = {
+    //     0:1,
+    //     1:2,
+    //     length:2
+    // }
+    // console.log(toArray(likeArray));
+
+    // var arr = ['abc','abd','abbc']
+
+    // const publicStr = arr.reduce((pre, cur) => {
+    //   return [...pre].filter(v => cur.includes(v))
+    // }).join("")
+
+    // console.log(publicStr);
+
+    // var nums = [-1, -2, -3, -4, -5],
+    //   target = -8
+    // var twoSum = function(nums, target) {
+    //   const len = nums.length
+    //   for (let i = 0; i < len; i++) {
+    //       for (let j = i+1; j < len; j++) {
+    //         if (nums[i] + nums[j] === target) {
+    //           return [i, j]
+    //         }
+    //       }
+    //   }
+    // }
+    // var twoSum = function(nums, target) {
+    //   let obj = {}
+    //   for (var i = 0; i < nums.length; i++) {
+    //     if (obj[target - nums[i]] !== undefined) {
+    //       return [obj[target - nums[i]], i]
+    //     }
+    //     obj[nums[i]] = i
+    //   }
+    // }
+    // console.log(twoSum(nums, target))
+
+    // var str = 'au'
+    // var lengthOfLongestSubstring = function(s) {
+    //   const len = s.length
+    //   let notRepeat,maxLen = 1
+    //   if (len < 2) {
+    //     return len
+    //   }
+    //   for (let i = 0; i < len - 1; i++) {
+    //     notRepeat = s[i]
+    //     for (let j = i + 1; j < s.length; j++) {
+    //       if (notRepeat.includes(s[j])) {
+    //         break
+    //       } else {
+    //         notRepeat += s[j]
+    //         maxLen = Math.max(maxLen, notRepeat.length)
+    //       }
+    //     }
+    //   }
+    //   return maxLen
+    // }
+    // console.log(lengthOfLongestSubstring(str))
+
+    // var row = [3, 2, 0, 1]
+    // var minSwapsCouples = function(row) {
+    //   function findIdx(n) {
+    //     return row.findIndex(v => v === (n % 2 ? n - 1 : n + 1))
+    //   }
+    //   let result = 0
+    //   for (let i = 0; i < row.length; i += 2) {
+    //     var idx = findIdx(row[i])
+    //     if (idx !== i + 1) {
+    //       var temp = row[idx]
+    //       row[idx] = row[i + 1]
+    //       row[i + 1] = temp
+    //       result++
+    //     }
+    //   }
+    //   return result
+    // }
+    // console.log(minSwapsCouples(row));
+
+    // var nums = [1, 2, 1, 3, 2, 5]
+    // var singleNumber = function(nums) {
+    //   const obj = {},
+    //     len = nums.length
+    //   let arr = [];
+    //   let count = 0
+    //   for (let i = 0; i < len; i++) {
+    //     if(obj[nums[i]]){
+    //       count++
+    //       arr = arr.filter(v => v !== nums[i])
+    //     }else {
+    //       obj[nums[i]] = 1
+    //       arr.push(nums[i])
+    //     }
+    //   }
+    //   return arr
+    // }
+    // var singleNumber = function(nums) {
+    //   var newArr = nums.sort()
+    //   var result = []
+    //   for(let i=0;i<nums.length;i++){
+    //     if(nums[i] !== nums[i+1]){
+    //       result.push(nums[i])
+    //     }else {
+    //       i += 1
+    //     }
+    //   }
+    //   return result
+    // }
+    // console.log(singleNumber(nums));
+
+    // asteroids = [10, 2, -5]
+
+    // var asteroidCollision = function(asteroids) {
+    //   let len = asteroids.length
+    //   for (let i = 0; i < len; i++) {
+    //     const x = asteroids[i]
+    //     const y = asteroids[i + 1]
+    //     if (x > 0 && y < 0) {
+    //       if (x + y > 0) {
+    //         asteroids.splice(i + 1, 1)
+    //         len--
+    //         i--
+    //       } else if (x + y === 0) {
+    //         asteroids.splice(i, 2)
+    //         len -= 2
+    //         i -= 2
+    //       } else {
+    //         asteroids.splice(i, 1)
+    //         len -= 1
+    //         i -= 2
+    //       }
+    //     }
+    //   }
+    //   return asteroids
+    // }
+    // var asteroidCollision = function(asteroids) {
+    //   var stack = []
+    //   for (var i = 0; i < asteroids.length; i++) {
+    //     var item = asteroids[i]
+    //     if (item < 0) {
+    //       while (true) {
+    //         var a = Math.abs(item),
+    //           b = stack[stack.length - 1]
+    //         if (b < 0 || b == null) {
+    //           stack.push(item)
+    //           break
+    //         } else if (a == b) {
+    //           stack.pop()
+    //           break
+    //         } else if (a < b) {
+    //           break
+    //         } else {
+    //           stack.pop()
+    //         }
+    //       }
+    //     } else {
+    //       stack.push(item)
+    //     }
+    //   }
+    //   return stack
+    // }
+    // console.log(asteroidCollision(asteroids))
+    // console.log(asteroidCollision([5, 10, -5]))
+    // console.log(asteroidCollision([8, -8]))
+    // console.log(asteroidCollision([-2, -1, 1, 2]))
+
+    // var arr = [10, 13, 12, 14, 15]
+    var oddEvenJumps = function(A) {
+      var len = A.length,
+        count = 0
+      const m = new Map()
+      for (let i = 0; i < A.length; i++) {
+        m.set(A[i], i)
       }
-      var f1 = getGuid()
-      console.log( f1());
-      console.log( f1());
-      console.log( f1());
-      
-     
-    </script>
-  </body>
+      const sheng = new Map(Array.from(m).sort((a, b) => a[0] - b[0]))
+      const jiang = new Map(Array.from(m).sort((a, b) => b[0] - a[0]))
+      // console.log(sheng)
+      // console.log(jiang)
+
+      for (let i = 0; i < len; i++) {
+        var qiou = 0
+        var curIdx = i
+
+        function jump() {
+          if (curIdx === len - 1) {
+            count++
+            return
+          }
+          if (qiou % 2) {
+            for (let [val, idx] of jiang.entries()) {
+              if (val <= A[curIdx] && idx > curIdx) {
+                qiou++
+                curIdx = idx
+                jump()
+                break
+              }
+            }
+          } else {
+            for (let [val, idx] of sheng.entries()) {
+              if (val >= A[curIdx] && idx > curIdx) {
+                qiou++
+                curIdx = idx
+                jump()
+                break
+              }
+            }
+          }
+        }
+        jump()
+      }
+      return count
+    }
+    // console.log(oddEvenJumps([10, 13, 12, 14, 15]))
+    console.log(oddEvenJumps([2, 3, 1, 1, 4]))
+    // console.log(oddEvenJumps([5, 1, 3, 4, 2]))
+  </script>
 </html>
