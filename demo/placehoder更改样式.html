@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>anchor</title>
+
+        <style>
+            * {
+                user-select: none;
+            }
+            .input::-webkit-input-placeholder {
+                /* Chrome/Opera/Safari */
+                color: pink;
+            }
+            ::-moz-placeholder {
+                /* Firefox 19+ */
+                color: pink;
+            }
+            :-ms-input-placeholder {
+                /* IE 10+ */
+                color: pink;
+            }
+            :-moz-placeholder {
+                /* Firefox 18- */
+                color: pink;
+            }
+        </style>
+    </head>
+    <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onbeforecopy="return false" oncopy="document.selection.empty()" onselect="document.selection.empty()">
+        <input type="text" class="input" placeholder="请输入" />
+        <input type="text" placeholder="请输入2" />
+        <a>我是啊表情</a>
+        <p>的就是咯哈打卡时间肯定就</p>
+    </body>
+    <script>
+        // var a = 8
+        // var func = (function() {
+        //     var a = 10
+        //     return function() {
+        //         a++
+        //         alert(a)
+        //     }
+        // })()
+        // func()
+        // func()
+
+        var resultArray = [
+            {
+                pic: 'p1',
+                score: [{ j1: 90 }, { j2: 96 }, { j3: 85 }, { j4: 89 }],
+            },
+            {
+                pic: 'p2',
+                score: [{ j1: 83 }, { j2: 56 }, { j3: 79 }, { j4: 23 }],
+            },
+        ]
+        function logScore(arr) {
+            return arr.map(v => {
+                let scoreArr = v.score.map(item => Number(Object.values(item)))
+                function average(result) {
+                    let resultMax = Math.max.apply(null,result)
+                    let resultMin = Math.min.apply(null,result)
+                    return result.reduce((total,cur) => total+cur,-resultMin-resultMax)/(result.length -2)
+                }
+                return `${v.pic}最后得分：${average(scoreArr)}`
+            })
+        }
+        console.log(logScore(resultArray));
+         
+    </script>
+</html>

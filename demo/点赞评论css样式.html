@@ -29,10 +29,21 @@
             #tab2:checked ~ #content2 {
                 display: block;
             }
-
-            .list li:nth-last-child(n + 4) ~ li,
-            .list li:nth-last-child(n + 4):first-child {
-                color: red;
+            ::-webkit-input-placeholder {
+                /* Chrome/Opera/Safari */
+                color: pink;
+            }
+            ::-moz-placeholder {
+                /* Firefox 19+ */
+                color: pink;
+            }
+            :-ms-input-placeholder {
+                /* IE 10+ */
+                color: pink;
+            }
+            :-moz-placeholder {
+                /* Firefox 18- */
+                color: pink;
             }
         </style>
     </head>
@@ -48,19 +59,5 @@
         <label for="tab2">TAB2</label>
         <div id="content1" class="tab-content">CONTENT1</div>
         <div id="content2" class="tab-content">CONTENT2</div>
-
-
-        <ul class="list">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-        </ul>
-        <ul class="list">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-        </ul>
     </body>
 </html>
