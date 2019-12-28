@@ -12,7 +12,8 @@
         "React": true,
         "ReactDOM": true,
         "rootReactElement": true,
-        "rootElement": true
+        "rootElement": true,
+        "flvjs": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
