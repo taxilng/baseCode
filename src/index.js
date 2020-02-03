@@ -246,31 +246,35 @@ var cpuData = [
     ['', '', '', '', '', 'S5L8900', 'MT6573/13', '', '', '', 'Tegra'],
     ['', '', '', '', '', '', 'MT6516', '', '', '', '']
 ]
-var newcpuData = cpuData
-    .map((v) =>
-        v.map((x, i, arr) => {
-            var temp = ``
-            if (i === 0) {
-                temp = `<tr><td class="content">${x}</td>`
-            } else if (i === arr.length - 1) {
-                temp = `<td class="content">${x}</td></tr>`
-            } else {
-                temp = `<td class="content">${x}</td>`
-            }
-            return temp
-        })
-    )
-    .flat()
-    .join('')
-// console.log(newcpuData);
-var tbody = document.querySelector('#tbody')
-// console.log(tbody);
-tbody.insertAdjacentHTML('beforeend', newcpuData)
-// 背景高亮
-var content = document.querySelectorAll('td.content')
-for (var key of content) {
-    if (key.textContent.includes('骁龙439')) {
-        console.log(key)
-        key.classList.add('newCpu')
+try {
+    var newcpuData = cpuData
+        .map((v) =>
+            v.map((x, i, arr) => {
+                var temp = ``
+                if (i === 0) {
+                    temp = `<tr><td class="content">${x}</td>`
+                } else if (i === arr.length - 1) {
+                    temp = `<td class="content">${x}</td></tr>`
+                } else {
+                    temp = `<td class="content">${x}</td>`
+                }
+                return temp
+            })
+        )
+        .flat()
+        .join('')
+    // console.log(newcpuData);
+    var tbody = document.querySelector('#tbody')
+    // console.log(tbody);
+    tbody.insertAdjacentHTML('beforeend', newcpuData)
+    // 背景高亮
+    var content = document.querySelectorAll('td.content')
+    for (var key of content) {
+        if (key.textContent.includes('骁龙439')) {
+            console.log(key)
+            key.classList.add('newCpu')
+        }
     }
+} catch (error) {
+    alert(error)
 }
