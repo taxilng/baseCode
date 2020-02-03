@@ -1,9 +1,10 @@
 const path = require('path')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'bundle.js',
+        filename: 'bundle.[hash].js',
         path: path.resolve(__dirname, 'dist')
     },
     module: {
@@ -20,5 +21,19 @@ module.exports = {
                 include: path.resolve(__dirname, 'src')
             }
         ]
-    }
+    },
+    //插件
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: './LadderDiagram/mobile.html',
+            hash: true,
+            minify: {
+                // 压缩HTML文件
+                removeComments: true, // 移除HTML中的注释
+                collapseWhitespace: true, // 删除空白符与换行符
+                minifyCSS: true // 压缩内联css
+            }
+        })
+    ]
 }
