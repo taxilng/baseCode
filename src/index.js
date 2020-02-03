@@ -247,6 +247,7 @@ var cpuData = [
     ['', '', '', '', '', '', 'MT6516', '', '', '', '']
 ]
 try {
+    alert(111)
     var newcpuData = cpuData
         .map((v) =>
             v.map((x, i, arr) => {
