@@ -34,11 +34,14 @@
     </head>
 
     <body>
-        <input type="text" id="box" placeholder="网址" />
-        <button id="btn">保存网址</button>
-        <span id="random"></span>
-        <input type="text" id="movSrc" /> <button id="loadMov">加载视频</button>
-        <button id="randomMov">随机视频</button>
+        <div class="header">
+            <input type="text" id="box" placeholder="网址" />
+            <button id="btn">保存网址</button>
+            <span id="random"></span>
+            <input type="text" id="movSrc" />
+            <button id="loadMov">加载视频</button>
+            <button id="randomMov">随机视频</button>
+        </div>
         <iframe
             width="100%"
             frameborder="0"
@@ -81,6 +84,12 @@
                 movSrc.value = document.querySelector('#random').innerHTML = num
                 ifra.src = `https://yaoshe${id}.com/embed/${num}`
             }
+            var header = document.querySelector('.header')
+            var height = getComputedStyle(header).getPropertyValue('height')
+            var height1 = header.getBoundingClientRect().height
+            console.log(height)
+            console.log(height1)
+            ifra.style.height = 'calc(100% - ' + height1 + 'px - 5px)'
         </script>
     </body>
 </html>
