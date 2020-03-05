@@ -1,6 +1,10 @@
 /**
  * Created by wisdom on 2017/5/5.
  */
+var baseConfig = {
+    paths:'',
+    prefix:'',
+}
 (function (config) {
     var html = document.documentElement,
         paths = config.paths,
