@@ -45,6 +45,50 @@
 	</div>
 
 
+
+
+   
+      <table id="table" border="1" cellspacing="0" cellpadding="0" style="width:100%;text-align: center;">
+                            
+                                    <tr >
+                                        <td colspan="2"><span>2月</span></td>
+                                        <td >星期一</td>
+                                        <td>星期二</td>
+                                        <td>星期三</td>
+                                        <td>星期四</td>
+                                        <td>星期五</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td v-for="item in pbzq">{{item}}</td>
+                                    </tr>
+                                    <tbody v-for="item in tableData">
+                                        <tr>
+                                            <td rowspan="2">{{item.name}}</td>
+                                            <td>上午</td>
+                                            <td>{{item.id}}</td>
+                                            <td>{{item.price}}</td>
+                                            <td>{{item.num}}</td>
+                                            <td>{{item.author}}</td>
+                                            <td>{{item.img}}</td>
+    
+                                        <tr>
+                                            <td>下午</td>
+                                            <td>{{item.id}}</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                      </tr>
+                                    <tbody>
+    </table>
+
+
+
+
+
 </body>
 <script src="./jquery-3.0.0.min.js"></script>
 <script>

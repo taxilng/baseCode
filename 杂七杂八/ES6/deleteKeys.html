@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .arrow_box {
+        margin: 100px;
+        width: 100px;
+        height: 40px;
+        /* background: hotpink; */
+        animation: glow 800ms ease-out infinite alternate;
+      }
+      @keyframes glow {
+        0% {
+          border-color: #393;
+          box-shadow: 0 0 5px rgba(0, 255, 0, 0.2),
+            inset 0 0 5px rgba(0, 255, 0, 0.1), 0 1px 0 #393;
+        }
+        100% {
+          border-color: #6f6;
+          box-shadow: 0 0 20px rgba(0, 255, 0, 0.6),
+            inset 0 0 10px rgba(0, 255, 0, 0.4), 0 1px 0 #6f6;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button class="arrow_box">大白牛逼</button>
+    <script>
+      //   function deleteKeys(query, delVals = []) {
+      //     if (!query) {
+      //       return ''
+      //     }
+      //     const extraDelVals = [...delVals, undefined, '', null, -9999]
+      //     const newObj = {}
+      //     Object.keys(query)
+      //       .filter(v => !extraDelVals.includes(query[v]))
+      //       .forEach(v => {
+      //         newObj[v] = query[v]
+      //       })
+      //     return newObj
+      //   }
+
+      //   // 测试
+      //   const a = {
+      //     b: undefined,
+      //     c: '',
+      //     d: null,
+      //     e: -9999,
+      //     f: 1
+      //   }
+      //   const newa = deleteKeys(a)
+      //   console.log(newa)
+
+      var newArr = []
+      const sourceArr = [1, 1, 1,1, 2, 1, 1, 1, 2, 1,3,3,2,3,5,5,1]
+     const a = sourceArr.join("").match(/(.)\1*/g)
+     console.log(a);
+     
+    </script>
+  </body>
+</html>
