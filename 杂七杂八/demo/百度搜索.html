@@ -1,83 +1,30 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>anchor</title>
-    <style>
-        * {
-      margin: 0;
-      padding: 0;
-    }
+  </head>
 
-    #wei {
-      width: 500px;
-      height: 600px;
-      margin: 0 auto;
-      border: 0px solid gray;
-    }
+  <body ng-controller="show">
+    <a style="cursor: pointer;" id="btn">查询38</a>
+    <p class="box"></p>
+    <input class="box1" type="hidden" />
+  </body>
+  <script src="../../plug/jquery-3.0.0.min.js"></script>
+  <script type="text/javascript">
+    $('#btn').click(function (e) {
+      var aa = $('#btn').text()
+      console.log(aa)
 
-    #wei input {
-      width: 476px;
-      height: 50px;
-      line-height: 50px;
-      padding-left: 20px;
-      font-size: 16px;
-    }
-
-    #wei ul {
-      height: auto;
-      border: 1px solid #ccc;
-      display: none;
-    }
-
-    #wei ul li {
-      width: 100%;
-      height: 30px;
-      line-height: 30px;
-      text-indent: 10px;
-      font-size: 16px;
-      list-style: none;
-    }
-
-    #wei ul li a {
-      text-decoration: none;
-    }
-
-    #wei ul li:hover {
-      display: block;
-      background: #ccc;
-      color: #fff;
-    }
-  </style>
-</head>
-
-<body ng-controller="show">
-    <p id="wei">
-        <input type="text" id="text">
-        <button id="btn">查询</button>
-        <ul id="list"></ul>
-    </p>
-</body>
-<script src="../plug/jquery-3.0.0.min.js"></script>
-<script type="text/javascript">
-    var txt = document.getElementById("text");
-    var btn = document.getElementById("btn");
-    btn.onclick = function () {
-
-      var url = 'http://www.baidu.com/s?wd=' + txt.value;
-      var motnhe1;
+      $('.box1').val(38)
+      $('.box').text(88)
+      data = { a: 1 }
       $.ajax({
-        url: url,
-        success: function (res) {
-          hah(res)
-        }
+        url: 'https://cnodejs.org/api/v1/topics',
+        data: data,
+        type: 'post',
+        success: function (res) {},
       })
-      function hah(res) {
-        motnhe1 = res.motnhe1
-        console.log(motnhe1)
-      }
-    }
-</script>
-
+    })
+  </script>
 </html>
