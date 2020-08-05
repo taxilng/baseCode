@@ -2,32 +2,12 @@
 <html ng-app="myApp">
   <head>
     <meta charset="UTF-8" />
-    <title>anchor</title>
+    <title>eventBus简单实现</title>
   </head>
 
-  <body ng-controller="show">
-    <a style="cursor: pointer;" id="btn">查询38</a>
-    <p class="box"></p>
-    <input class="box1" type="hidden" />
+  <body>
   </body>
-  <script src="../../plug/jquery-3.0.0.min.js"></script>
   <script type="text/javascript">
-    $('#btn').click(function (e) {
-      var aa = $('#btn').text()
-      console.log(aa)
-
-      $('.box1').val(38)
-      $('.box').text(88)
-      data = { a: 1 }
-      $.ajax({
-        url: 'https://cnodejs.org/api/v1/topics',
-        data: data,
-        type: 'post',
-        success: function (res) {},
-      })
-    })
-
-
     class EventBus {
        _events = {}
        $on (name, func) {
@@ -46,7 +26,9 @@
     const bus = new EventBus()
     // 订阅
     bus.$on('click',v => console.log('你好'+v))
+    bus.$on('click',v => console.log('吃饭了'+v))
     // 发布
     bus.$emit('click', '张三')
+    bus.$emit('click', '李斯')
   </script>
 </html>
