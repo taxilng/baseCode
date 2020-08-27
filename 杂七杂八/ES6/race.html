@@ -4,14 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+
+    </style>
   </head>
   <body>
-      <a href="https://172.16.101.99:9443/#/home?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0eXkwMSIsImlzcyI6Ik9ubGluZSBBdXRoIEJ1aWxkZXIiLCJpYXQiOjE1OTY1OTUyNjUsImV4cCI6MTU5NjY4MTY2NX0.QGsZPbsQRjn0qs2fREqPnYSrxKcEZbNhV6TfHu_kgvI" target="_blank">跳转吧</a>
+      <input id="name" type="text" placeholder="用户名">
+      <input id="password" type="text" placeholder="密码">
+      <button id="btn">跳转</button>
+      <a href="http://localhost:8081/#/home?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0eXkwMSIsImlzcyI6Ik9ubGluZSBBdXRoIEJ1aWxkZXIiLCJpYXQiOjE1OTY2Nzc3NDYsImV4cCI6MTU5Njc2NDE0Nn0.YfLJykGI9lWJOoZy9j6Ku7kacA39STqqTEqNL4bEr2A" target="_blank">跳转吧1</a>
+      <a href="http://localhost:8081/#/home?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0eXl0ZXN0IiwiaXNzIjoiT25saW5lIEF1dGggQnVpbGRlciIsImlhdCI6MTU5NjY3OTQ0NCwiZXhwIjoxNTk2NzY1ODQ0fQ.rQAUGMljvwLH4djzqE0lb6jCoj9_q-yucWnrnRB1ISE" target="_blank">跳转吧2</a>
     <!-- <iframe
-      src="https://172.16.101.99:9443/#/home?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0eXkwMSIsImlzcyI6Ik9ubGluZSBBdXRoIEJ1aWxkZXIiLCJpYXQiOjE1OTY1NDExMzAsImV4cCI6MTU5NjYyNzUzMH0.kbOoaJSWPsO0B8b6MqFhRSsQkhsbpUoS3EWO7sLdFQs"
+      src="https://172.16.101.99:9443/#/home?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0eXkwMSIsImlzcyI6Ik9ubGluZSBBdXRoIEJ1aWxkZXIiLCJpYXQiOjE1OTY1OTUyNjUsImV4cCI6MTU5NjY4MTY2NX0.QGsZPbsQRjn0qs2fREqPnYSrxKcEZbNhV6TfHu_kgvI"
       width="1200px" 
       height="900px" allow="geolocation; microphone; camera; midi; encrypted-media;"
     ></iframe> -->
   </body>
+  <script src="../../plug/jquery-3.0.0.min.js"></script>
+  <script>
+      $('#btn').click(function () {
+          var name = $('#name').val()
+          var password = $('#password').val()
+          console.log(name, password);
+      })
+  </script>
 </html>
 
