@@ -269,6 +269,7 @@ const defaultStrat = function (parentVal: any, childVal: any): any {
 
 /**
  * Validate component names
+ * 验证组件名称
  */
 function checkComponents (options: Object) {
   for (const key in options.components) {
@@ -294,23 +295,27 @@ export function validateComponentName (name: string) {
 /**
  * Ensure all props option syntax are normalized into the
  * Object-based format.
+ * 确保将所有props选项语法标准化为基于对象的格式。
  */
 function normalizeProps (options: Object, vm: ?Component) {
   const props = options.props
   if (!props) return
   const res = {}
   let i, val, name
+  // props 支持 数组和对象 两种格式
   if (Array.isArray(props)) {
     i = props.length
+    // 巧用while代替for学到了
     while (i--) {
       val = props[i]
       if (typeof val === 'string') {
-        name = camelize(val)
-        res[name] = { type: null }
+        name = camelize(val) // 短横连接转驼峰 'a-b' 转成 'aB'
+        res[name] = { type: null } // 数组格式 还是要转成 对象格式的
       } else if (process.env.NODE_ENV !== 'production') {
         warn('props must be strings when using array syntax.')
       }
     }
+    // 严格对象判断，排除数组
   } else if (isPlainObject(props)) {
     for (const key in props) {
       val = props[key]
@@ -331,6 +336,7 @@ function normalizeProps (options: Object, vm: ?Component) {
 
 /**
  * Normalize all injections into Object-based format
+ * 将所有注入标准化为基于对象的格式
  */
 function normalizeInject (options: Object, vm: ?Component) {
   const inject = options.inject
@@ -384,6 +390,8 @@ function assertObjectType (name: string, value: any, vm: ?Component) {
 /**
  * Merge two option objects into a new one.
  * Core utility used in both instantiation and inheritance.
+ * 将两个选项对象合并到一个新的对象中。
+ * 用于实例化和继承的核心实用程序
  */
 export function mergeOptions (
   parent: Object,
@@ -398,8 +406,8 @@ export function mergeOptions (
     child = child.options
   }
 
-  normalizeProps(child, vm)
-  normalizeInject(child, vm)
+  normalizeProps(child, vm) //props参数的统一化成对象；
+  normalizeInject(child, vm) //inject参数的统一化成对象；
   normalizeDirectives(child)
 
   // Apply extends and mixins on the child options,
