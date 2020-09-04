@@ -12,19 +12,24 @@
     <script>
         'use strict'
 
-        function outer() {
-            var i = 1;
-            console.log(i);
-            return function () {
-                console.log(i++);
-            }
-        }
-        var outer1 = outer()
-        outer1()
-        outer1()
-        outer1()
-        outer1()
-        outer1()
+        // function outer() {
+        //     var i = 1;
+        //     console.log(i);
+        //     return function () {
+        //         console.log(i++);
+        //     }
+        // }
+        // var outer1 = outer()
+        // outer1()
+        // outer1()
+        // outer1()
+        // outer1()
+        // outer1()
+
+
+        var arr = [{a:20,b:'0.1'},{a:21,b:'0.2'}]
+        var obj = arr.reduce((total, cur) => ({...total, [cur.a]: cur.b}), {})
+        console.log(obj);
     </script>
 </body>
 

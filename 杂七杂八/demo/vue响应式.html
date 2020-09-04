@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+        {{t}}
+        <div v-for="item in arr">{{item}}</div>
+        ===我是对象===
+        <div v-for="(item,key) in obj">{{key}}:{{item}}</div>
+        <input v-model="obj.c" placeholder="edit me">
+    </div>
+    <script src="../../plug/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          t: '我是vue',
+          arr:[1,2,3],
+          obj:{a:1,b:2}
+        },
+       mounted(){
+        //    this.arr = [2,3,4]
+        this.arr[0] = 6
+        this.obj.c = 3
+        this.t = '我不试'
+       }
+      })
+    </script>
+  </body>
+</html>

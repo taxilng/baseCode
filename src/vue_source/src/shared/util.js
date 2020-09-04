@@ -67,9 +67,14 @@ export function isRegExp (v: any): boolean {
 
 /**
  * Check if val is a valid array index.
+ * 检查val是否为有效的数组索引
  */
 export function isValidArrayIndex (val: any): boolean {
+     //兼容 字符串'1'这样的
+     //parseFloat(string) 默认参数为string，严格语法就是转成String
     const n = parseFloat(String(val))
+    // 索引当然要大于等于0， 向下取整 必须 等于 自己 ；
+    // isFinite() 函数用于检查其参数是否是无穷大，如果 number 是 NaN（非数字），或者是正、负无穷大的数，则返回 false。
     return n >= 0 && Math.floor(n) === n && isFinite(val)
 }
 
@@ -237,9 +242,10 @@ export function toArray (list: any, start?: number): Array<any> {
 
 /**
  * Mix properties into target object.
+ * 将_from的属性混合（会覆盖）to对象中
  * 有污染的改变增加target object的属性
  * for in 可以拷贝继承属性，不可以拷贝 symbol
- * object.assign 可以拷贝symbol，不可以拷贝继承属性
+ * Object.assign 可以拷贝symbol，不可以拷贝继承属性
  * 这就是这个方法与object.assign的区别
  * demo
  * mys1 = Symbol('foo');

@@ -25,8 +25,12 @@ import {
  * Option overwriting strategies are functions that handle
  * how to merge a parent option value and a child option
  * value into the final value.
+ * 选项覆盖策略是处理的功能
+ * 如何合并父选项值和子选项
+ * 将值转换为最终值。
  */
-const strats = config.optionMergeStrategies
+// 在config.js中 值为 Object.create(null) = {}
+const strats = config.optionMergeStrategies 
 
 /**
  * Options with restrictions
@@ -124,6 +128,7 @@ strats.data = function (
   vm?: Component
 ): ?Function {
   if (!vm) {
+    // 当组件化时校验 data的值必须为函数
     if (childVal && typeof childVal !== 'function') {
       process.env.NODE_ENV !== 'production' && warn(
         'The "data" option should be a function ' +
@@ -337,6 +342,7 @@ function normalizeProps (options: Object, vm: ?Component) {
 /**
  * Normalize all injections into Object-based format
  * 将所有注入标准化为基于对象的格式
+ * 跟normalizeProps 几乎一样，不多做解释
  */
 function normalizeInject (options: Object, vm: ?Component) {
   const inject = options.inject
@@ -364,6 +370,7 @@ function normalizeInject (options: Object, vm: ?Component) {
 
 /**
  * Normalize raw function directives into object format.
+ * 将原始函数指令规范化为对象格式
  */
 function normalizeDirectives (options: Object) {
   const dirs = options.directives
@@ -408,12 +415,15 @@ export function mergeOptions (
 
   normalizeProps(child, vm) //props参数的统一化成对象；
   normalizeInject(child, vm) //inject参数的统一化成对象；
-  normalizeDirectives(child)
+  normalizeDirectives(child) //将原始函数指令规范化为对象格式
 
   // Apply extends and mixins on the child options,
   // but only if it is a raw options object that isn't
   // the result of another mergeOptions call.
   // Only merged options has the _base property.
+  //在子选项上应用扩展和混合，但前提是它不是原始选项对象
+  //另一个mergeOptions调用的结果只有合并的选项才具有_base属性。
+  //递归的方法，把extends和mixins的属性值全拿出来了
   if (!child._base) {
     if (child.extends) {
       parent = mergeOptions(parent, child.extends, vm)
@@ -431,11 +441,13 @@ export function mergeOptions (
     mergeField(key)
   }
   for (key in child) {
+    //假如这个属性子元素有，父元素没有，就合并进去。 也就是优先父元素的属性；
     if (!hasOwn(parent, key)) {
       mergeField(key)
     }
   }
   function mergeField (key) {
+      // data methods props 方法的整理
     const strat = strats[key] || defaultStrat
     options[key] = strat(parent[key], child[key], vm, key)
   }

@@ -197,6 +197,8 @@ export function defineReactive (
  * Set a property on an object. Adds the new property and
  * triggers change notification if the property doesn't
  * already exist.
+ * 在对象上设置属性。 添加新属性并
+ * 如果该属性尚不存在，则触发更改通知。
  */
 export function set (target: Array<any> | Object, key: any, val: any): any {
   if (process.env.NODE_ENV !== 'production' &&
@@ -204,23 +206,31 @@ export function set (target: Array<any> | Object, key: any, val: any): any {
   ) {
     warn(`Cannot set reactive property on undefined, null, or primitive value: ${(target: any)}`)
   }
+  // 如果target参数是数组，key是有效的数组索引
   if (Array.isArray(target) && isValidArrayIndex(key)) {
-    target.length = Math.max(target.length, key)
+    //为什么不直接写成 target[key] = val？
+    //就是vue实现了splice的变异方法，
+    //调用splice的话，就是调了事件通知方法了。双向数据绑定
+    target.length = Math.max(target.length, key) 
     target.splice(key, 1, val)
     return val
   }
+  //当target有key属性，并且不是Object.prototype的原生属性时，直接赋值，会直接触发监听
   if (key in target && !(key in Object.prototype)) {
     target[key] = val
     return val
   }
+  // 凡是有 __ob__属性的都已经被观察了
   const ob = (target: any).__ob__
   if (target._isVue || (ob && ob.vmCount)) {
     process.env.NODE_ENV !== 'production' && warn(
+        //避免在运行时向Vue实例或其根$ data添加反应性属性；应该在data选项中预先声明它
       'Avoid adding reactive properties to a Vue instance or its root $data ' +
       'at runtime - declare it upfront in the data option.'
     )
     return val
   }
+  // 假如target对象没有被监听，那么也不需要监听了，属性赋值完走人
   if (!ob) {
     target[key] = val
     return val
