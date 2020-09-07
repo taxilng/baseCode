@@ -131,6 +131,7 @@ export function observe (value: any, asRootData: ?boolean): Observer | void {
 
 /**
  * Define a reactive property on an Object.
+ * 在对象上定义响应式属性，拦截属性
  */
 export function defineReactive (
   obj: Object,
@@ -140,7 +141,7 @@ export function defineReactive (
   shallow?: boolean
 ) {
   const dep = new Dep()
-
+  //  方法返回指定对象上一个自有属性对应的属性描述符 假如不可配置，直接return
   const property = Object.getOwnPropertyDescriptor(obj, key)
   if (property && property.configurable === false) {
     return

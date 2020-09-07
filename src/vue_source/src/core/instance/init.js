@@ -43,6 +43,7 @@ export function initMixin (Vue: Class<Component>) {
             // internal component options needs special treatment.
             initInternalComponent(vm, options)
         } else {
+            // 对options的参数进行各种处理
             vm.$options = mergeOptions(
                 resolveConstructorOptions(vm.constructor), //将Vue.options 取出
                 options || {},
@@ -57,8 +58,8 @@ export function initMixin (Vue: Class<Component>) {
         }
         // expose real self
         vm._self = vm
-        initLifecycle(vm)
-        initEvents(vm)
+        initLifecycle(vm) // 初始化生命周期
+        initEvents(vm)  //初始化 事件
         initRender(vm)
         callHook(vm, 'beforeCreate')
         initInjections(vm) // resolve injections before data/props

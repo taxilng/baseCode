@@ -28,11 +28,12 @@ export function setActiveInstance(vm: Component) {
     activeInstance = prevActiveInstance
   }
 }
-
+// 初始化生命周期
 export function initLifecycle (vm: Component) {
   const options = vm.$options
 
   // locate first non-abstract parent
+  // 找到第一位非抽象父母
   let parent = options.parent
   if (parent && !options.abstract) {
     while (parent.$options.abstract && parent.$parent) {

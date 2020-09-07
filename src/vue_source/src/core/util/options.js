@@ -7,7 +7,7 @@ import { unicodeRegExp } from './lang'
 import { nativeWatch, hasSymbol } from './env'
 
 import {
-  ASSET_TYPES,
+  ASSET_TYPES, // 资产类型   ['component','directive','filter']
   LIFECYCLE_HOOKS
 } from 'shared/constants'
 
@@ -147,6 +147,7 @@ strats.data = function (
 
 /**
  * Hooks and props are merged as arrays.
+ * 生命周期的函数合并
  */
 function mergeHook (
   parentVal: ?Array<Function>,
@@ -158,9 +159,9 @@ function mergeHook (
       : Array.isArray(childVal)
         ? childVal
         : [childVal]
-    : parentVal
+    : parentVal // 两个参数合并，没啥好说的，但是嵌套三元真的不喜欢
   return res
-    ? dedupeHooks(res)
+    ? dedupeHooks(res) //数组去重
     : res
 }
 
@@ -184,6 +185,7 @@ LIFECYCLE_HOOKS.forEach(hook => {
  * When a vm is present (instance creation), we need to do
  * a three-way merge between constructor options, instance
  * options and parent options.
+ * 存在虚拟机时（创建实例），我们需要在构造函数选项，实例选项和父选项之间进行三向合并。
  */
 function mergeAssets (
   parentVal: ?Object,
@@ -193,14 +195,16 @@ function mergeAssets (
 ): Object {
   const res = Object.create(parentVal || null)
   if (childVal) {
+    // 如果存在实例属性则合并
     process.env.NODE_ENV !== 'production' && assertObjectType(key, childVal, vm)
-    return extend(res, childVal)
+    return extend(res, childVal) //参数合并，优先childVal属性
   } else {
     return res
   }
 }
 
 ASSET_TYPES.forEach(function (type) {
+  //{components : 实例属性和父属性合并下}
   strats[type + 's'] = mergeAssets
 })
 
@@ -209,6 +213,7 @@ ASSET_TYPES.forEach(function (type) {
  *
  * Watchers hashes should not overwrite one
  * another, so we merge them as arrays.
+ * 观察者哈希值不应相互覆盖，因此我们将它们合并为数组。
  */
 strats.watch = function (
   parentVal: ?Object,
