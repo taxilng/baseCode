@@ -9,9 +9,10 @@ let uid = 0
 /**
  * A dep is an observable that can have multiple
  * directives subscribing to it.
+ * 一个dep是可观察的，可以有多个指定它的指令。
  */
 export default class Dep {
-  static target: ?Watcher;
+  static target: ?Watcher; // 静态属性
   id: number;
   subs: Array<Watcher>;
 
@@ -36,6 +37,7 @@ export default class Dep {
 
   notify () {
     // stabilize the subscriber list first
+    // 浅拷贝一下数组
     const subs = this.subs.slice()
     if (process.env.NODE_ENV !== 'production' && !config.async) {
       // subs aren't sorted in scheduler if not running async
@@ -44,6 +46,7 @@ export default class Dep {
       subs.sort((a, b) => a.id - b.id)
     }
     for (let i = 0, l = subs.length; i < l; i++) {
+    // 遍历更新
       subs[i].update()
     }
   }
@@ -52,6 +55,8 @@ export default class Dep {
 // The current target watcher being evaluated.
 // This is globally unique because only one watcher
 // can be evaluated at a time.
+// 当前正在评估的目标观察者。
+// 这是全局唯一的，因为一次只能评估一个观察者。
 Dep.target = null
 const targetStack = []
 

@@ -43,7 +43,10 @@ export class Observer {
     this.value = value
     this.dep = new Dep()
     this.vmCount = 0
-    def(value, '__ob__', this)
+    // 核心代码，让一个对象例如 var obj = {}
+    // obj.__obj__ = { dep: new Dep() }
+    // obj.__obj__.dep.notify()
+    def(value, '__ob__', this) 
     if (Array.isArray(value)) {
       if (hasProto) {
         protoAugment(value, arrayMethods)
@@ -106,6 +109,7 @@ function copyAugment (target: Object, src: Object, keys: Array<string>) {
  * Attempt to create an observer instance for a value,
  * returns the new observer if successfully observed,
  * or the existing observer if the value already has one.
+ * 尝试为某个值创建一个观察者实例，如果成功观察到该观察者，则返回新的观察者，如果该值已有一个观察者，则返回现有的观察者。
  */
 export function observe (value: any, asRootData: ?boolean): Observer | void {
   if (!isObject(value) || value instanceof VNode) {
@@ -243,6 +247,7 @@ export function set (target: Array<any> | Object, key: any, val: any): any {
 
 /**
  * Delete a property and trigger change if necessary.
+ * 删除属性并在必要时触发更改
  */
 export function del (target: Array<any> | Object, key: any) {
   if (process.env.NODE_ENV !== 'production' &&
