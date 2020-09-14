@@ -21,6 +21,7 @@ const arrayKeys = Object.getOwnPropertyNames(arrayMethods)
 /**
  * In some cases we may want to disable observation inside a component's
  * update computation.
+ * 在某些情况下，我们可能希望禁用组件更新计算中的观察。
  */
 export let shouldObserve: boolean = true
 
@@ -110,22 +111,26 @@ function copyAugment (target: Object, src: Object, keys: Array<string>) {
  * returns the new observer if successfully observed,
  * or the existing observer if the value already has one.
  * 尝试为某个值创建一个观察者实例，如果成功观察到该观察者，则返回新的观察者，如果该值已有一个观察者，则返回现有的观察者。
+ * 参数二 asRootData 布尔值，是否为根属性，一般不填
  */
 export function observe (value: any, asRootData: ?boolean): Observer | void {
   if (!isObject(value) || value instanceof VNode) {
     return
   }
   let ob: Observer | void
+  //自身有 '__ob__'属性，说明是响应式
   if (hasOwn(value, '__ob__') && value.__ob__ instanceof Observer) {
     ob = value.__ob__
   } else if (
+    //是否观察 为数组或者是对象
+    //Object.isExtensible() 方法判断一个对象是否是可扩展的
     shouldObserve &&
     !isServerRendering() &&
     (Array.isArray(value) || isPlainObject(value)) &&
-    Object.isExtensible(value) &&
-    !value._isVue
+    Object.isExtensible(value) && 
+    !value._isVue // 避免被观察的标志
   ) {
-    ob = new Observer(value)
+    ob = new Observer(value) // 开启观察模式
   }
   if (asRootData && ob) {
     ob.vmCount++
