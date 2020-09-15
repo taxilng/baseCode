@@ -13,14 +13,18 @@ export function initUse (Vue: GlobalAPI) {
     }
 
     // additional parameters
+    // 将除了第一参数的另外几个参数拿出去来。
     const args = toArray(arguments, 1)
+    // 在第一个参数添加上 Vue类
     args.unshift(this)
     if (typeof plugin.install === 'function') {
+      // 有install属性就调用这个属性值的方法，跟上拼凑的参数
       plugin.install.apply(plugin, args)
     } else if (typeof plugin === 'function') {
+      // 没有install，但是plugin本身是函数，那就直接调用
       plugin.apply(null, args)
     }
-    installedPlugins.push(plugin)
+    installedPlugins.push(plugin) //缓存起来
     return this
   }
 }

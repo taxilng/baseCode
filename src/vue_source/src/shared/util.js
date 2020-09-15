@@ -231,6 +231,7 @@ export const bind = Function.prototype.bind
 /**
  * Convert an Array-like object to a real Array.
  * 将类似Array的对象转换为真实的Array。
+ * 第二个参数比较 有意思，设置开始复制的下标，默认值0
  */
 export function toArray (list: any, start?: number): Array<any> {
     start = start || 0
