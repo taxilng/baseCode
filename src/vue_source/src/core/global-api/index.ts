@@ -75,8 +75,8 @@ export function initGlobalAPI (Vue: GlobalAPI) {
  // Vue.options.components = { KeepAlive }
   extend(Vue.options.components, builtInComponents)
 
-  initUse(Vue)
-  initMixin(Vue)
+  initUse(Vue) // Vue.use() 方法 位置global-api/use.js
+  initMixin(Vue) //就是合并一些data,props,methods方法 global-api/mixin.js
   initExtend(Vue)
   initAssetRegisters(Vue)
 }

@@ -35,6 +35,10 @@ const sharedPropertyDefinition = {
   set: noop
 }
 
+/**
+ * 劫持get和set方法
+ * target.key <==> target.sourceKey.key
+ */
 export function proxy (target: Object, sourceKey: string, key: string) {
   sharedPropertyDefinition.get = function proxyGetter () {
     return this[sourceKey][key]
@@ -45,6 +49,10 @@ export function proxy (target: Object, sourceKey: string, key: string) {
   Object.defineProperty(target, key, sharedPropertyDefinition)
 }
 
+/**
+ * 
+ * new Vue() 一开始就初始化了位于 beforeCreate 和 created质检
+ */
 export function initState (vm: Component) {
   vm._watchers = []
   const opts = vm.$options
@@ -53,6 +61,7 @@ export function initState (vm: Component) {
   if (opts.data) {
     initData(vm)
   } else {
+    // 将Vue._data的属性，进行依赖收集
     observe(vm._data = {}, true /* asRootData */)
   }
   if (opts.computed) initComputed(vm, opts.computed)
@@ -147,7 +156,7 @@ function initData (vm: Component) {
       proxy(vm, `_data`, key)
     }
   }
-  // observe data
+  // observe data 依赖收集data属性
   observe(data, true /* asRootData */)
 }
 
@@ -168,12 +177,15 @@ const computedWatcherOptions = { lazy: true }
 
 function initComputed (vm: Component, computed: Object) {
   // $flow-disable-line
+  //初始化空对象
   const watchers = vm._computedWatchers = Object.create(null)
   // computed properties are just getters during SSR
+  // 判断是否是服务器端渲染
   const isSSR = isServerRendering()
 
   for (const key in computed) {
     const userDef = computed[key]
+    // computed 支持 函数 和 对象 {get: function, set: function}
     const getter = typeof userDef === 'function' ? userDef : userDef.get
     if (process.env.NODE_ENV !== 'production' && getter == null) {
       warn(
@@ -183,6 +195,7 @@ function initComputed (vm: Component, computed: Object) {
     }
 
     if (!isSSR) {
+      //前端渲染的情况下，为计算的属性创建内部监视程序
       // create internal watcher for the computed property.
       watchers[key] = new Watcher(
         vm,
@@ -212,7 +225,7 @@ export function defineComputed (
   key: string,
   userDef: Object | Function
 ) {
-  const shouldCache = !isServerRendering()
+  const shouldCache = !isServerRendering() // 前端渲染为true
   if (typeof userDef === 'function') {
     sharedPropertyDefinition.get = shouldCache
       ? createComputedGetter(key)
@@ -242,6 +255,7 @@ function createComputedGetter (key) {
   return function computedGetter () {
     const watcher = this._computedWatchers && this._computedWatchers[key]
     if (watcher) {
+    // 设置了{lazy:true} this.dirty = this.lazy
       if (watcher.dirty) {
         watcher.evaluate()
       }
@@ -253,6 +267,19 @@ function createComputedGetter (key) {
   }
 }
 
+/**
+ * 这个函数调用，返回的还是个函数
+ * 所有 {
+ *  get : function() {
+ *     return fn.call(this, this)// 谁调用指向谁
+ *   }
+ * }
+ * 例如 computed: {
+ *    a: function() { return this.b }   
+ * }
+ * 当 this.a 时, 触发了defineProperty的get方法，此时
+ * fn.call(this, this) 的this就是指向 this.a的 this
+ */
 function createGetterInvoker(fn) {
   return function computedGetter () {
     return fn.call(this, this)

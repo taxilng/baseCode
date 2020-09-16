@@ -66,6 +66,6 @@ export function pushTarget (target: ?Watcher) {
 }
 
 export function popTarget () {
-  targetStack.pop()
-  Dep.target = targetStack[targetStack.length - 1]
+  targetStack.pop() //删除数组的最后一个
+  Dep.target = targetStack[targetStack.length - 1] //获取数组最后一个，当为空时，获取值为 undefined
 }

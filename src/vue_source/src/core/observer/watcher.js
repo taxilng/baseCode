@@ -56,13 +56,13 @@ export default class Watcher {
     vm._watchers.push(this)
     // options
     if (options) {
-      this.deep = !!options.deep
-      this.user = !!options.user
+      this.deep = !!options.deep // 默认值 false
+      this.user = !!options.user // 默认值 false
       this.lazy = !!options.lazy
       this.sync = !!options.sync
       this.before = options.before
     } else {
-      this.deep = this.user = this.lazy = this.sync = false
+      this.deep = this.user = this.lazy = this.sync = false // 默认值 false
     }
     this.cb = cb
     this.id = ++uid // uid for batching
@@ -97,13 +97,14 @@ export default class Watcher {
 
   /**
    * Evaluate the getter, and re-collect dependencies.
+   * 评估getter，然后重新收集依赖关系。
    */
   get () {
-    pushTarget(this)
+    pushTarget(this) // Dep.target赋值，目标堆栈增加
     let value
     const vm = this.vm
     try {
-      value = this.getter.call(vm, vm)
+      value = this.getter.call(vm, vm) //直接调用
     } catch (e) {
       if (this.user) {
         handleError(e, vm, `getter for watcher "${this.expression}"`)
@@ -206,6 +207,7 @@ export default class Watcher {
   /**
    * Evaluate the value of the watcher.
    * This only gets called for lazy watchers.
+   * 评估观察者的价值。 只有懒惰的观察者才需要这样做。
    */
   evaluate () {
     this.value = this.get()
