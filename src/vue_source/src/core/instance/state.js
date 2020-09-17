@@ -256,9 +256,23 @@ function createComputedGetter (key) {
     const watcher = this._computedWatchers && this._computedWatchers[key]
     if (watcher) {
     // 设置了{lazy:true} this.dirty = this.lazy
+    // 第一次执行是 dirty = true；
       if (watcher.dirty) {
+        //当执行了evaluate() dirty = false
+        //计算出 function的结果，赋值到watcher.value
         watcher.evaluate()
       }
+    /*
+      当调用了evaluate方法，就是会调用watcher.get方法，然后会调用pushTarget和popTarget。这样会导致一个问题，那就是Dep.target一直为undefined
+      当发生嵌套时，
+        computed: { a: ()  => { return this.b }, b: () => {return 1} }
+        我想调用this.a。 会触发第一次pushTarget A
+        然后调用 function(){ return this.b}
+        那是就是查询this.b 会触发第二次pushTarget B
+        然后触发 popTarget B
+        这时候就是push了2次 只能删除1次。
+        最后Dep.target就有值了
+    */
       if (Dep.target) {
         watcher.depend()
       }

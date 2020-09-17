@@ -100,6 +100,7 @@ export default class Watcher {
    * 评估getter，然后重新收集依赖关系。
    */
   get () {
+    //this是 wathcer的实例
     pushTarget(this) // Dep.target赋值，目标堆栈增加
     let value
     const vm = this.vm
@@ -114,6 +115,7 @@ export default class Watcher {
     } finally {
       // "touch" every property so they are all tracked as
       // dependencies for deep watching
+      //“触摸”每个属性，以便将它们作为深度监视的依赖项进行跟踪
       if (this.deep) {
         traverse(value)
       }
@@ -125,6 +127,7 @@ export default class Watcher {
 
   /**
    * Add a dependency to this directive.
+   * 向此指令添加依赖项。
    */
   addDep (dep: Dep) {
     const id = dep.id
@@ -139,6 +142,7 @@ export default class Watcher {
 
   /**
    * Clean up for dependency collection.
+   * 清理依赖性集合。
    */
   cleanupDeps () {
     let i = this.deps.length
@@ -216,6 +220,7 @@ export default class Watcher {
 
   /**
    * Depend on all deps collected by this watcher.
+   * 此观察者所有依赖收集。
    */
   depend () {
     let i = this.deps.length

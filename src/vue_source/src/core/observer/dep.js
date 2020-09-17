@@ -31,6 +31,10 @@ export default class Dep {
 
   depend () {
     if (Dep.target) {
+    // 调用的 watcher原型方法
+    // Dep.target为什么会有 watcher的方法
+    // 因为pushTarget(this)，在watcher里面调用了；this是Watcher的实例
+    // Dep.target = new Watcher()
       Dep.target.addDep(this)
     }
   }
