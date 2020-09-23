@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>anchor</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function isValidArrayIndex(val) {
+        const n = parseFloat(String(val))
+        return n >= 0 && Math.floor(n) === n && isFinite(val)
+      }
+      // 0 1 1 2 3 5 8
+      function fibonacci(n) {
+        if (!isValidArrayIndex(n)) return
+        if (n === 0) return 0
+        if (n === 1) return 1
+        return fibonacci(n - 1) + fibonacci(n - 2)
+      }
+
+      //   console.log(fibonacci(0))
+      //   console.log(fibonacci(1))
+      //   console.log(fibonacci(2))
+      //   console.log(fibonacci(3))
+      //   console.log(fibonacci(4))
+      //   console.log(fibonacci(5))
+      //   console.log(fibonacci(6))
+      //   console.log(fibonacci(-5))
+      //   console.log(fibonacci('a'))
+
+      // 尾递归优化
+      function tailFactorial(n, last, next) {
+        // if (!isValidArrayIndex(n)) return
+        if (n === 0) return 0
+        if (n === 1) return last
+        return tailFactorial(n - 1, next, last + next)
+      }
+      // 柯里化
+      function currying(fn, n, o) {
+        return function (m) {
+          if (!isValidArrayIndex(m)) return
+          return fn.call(this, m, n, o)
+        }
+      }
+
+      const fibo = currying(tailFactorial, 1, 1)
+      console.log(fibo(0))
+      console.log(fibo(1))
+      console.log(fibo(2))
+      console.log(fibo(3))
+      console.log(fibo(4))
+      console.log(fibo(5))
+      console.log(fibo(6))
+      console.log(fibo('a'))
+    </script>
+  </body>
+</html>
