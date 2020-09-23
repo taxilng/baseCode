@@ -38,12 +38,15 @@
       // 柯里化
       function currying(fn, n, o) {
         return function (m) {
-          if (!isValidArrayIndex(m)) return
           return fn.call(this, m, n, o)
         }
       }
 
-      const fibo = currying(tailFactorial, 1, 1)
+      const fibo = function (m) {
+        if (!isValidArrayIndex(m)) return '参数异常'
+        const cur = currying(tailFactorial, 1, 1)
+        return cur.call(this, m)
+      } 
       console.log(fibo(0))
       console.log(fibo(1))
       console.log(fibo(2))
